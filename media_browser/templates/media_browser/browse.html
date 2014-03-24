@@ -1,0 +1,34 @@
+{% extends "flaxman/base.html" %}
+{% load staticfiles %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/browse.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="browse_container">
+	{% for mediaObject in media %}
+	<div class="card">
+		<div class="name">{{mediaObject.title}}</div>
+
+		{% if mediaObject.type == 'IM' %}
+		<img class='media_image' src="{{MEDIA_URL}}{{mediaObject.image}}" alt="">
+		{% endif %}
+
+		{% if mediaObject.type == 'AU' %}
+		<audio src="audio.ogg" controls>
+			<p>Your browser does not support the audio element </p>
+		</audio>
+		{% endif %}
+
+		{% if mediaObject.type == 'VI' %}
+
+
+		{% endif %}
+		<div class="author">{{mediaObject.author}}</div>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock content %}
