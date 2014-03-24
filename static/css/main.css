@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	width: 80%;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+#title {
+	float: left;
+	margin-top: 12px;
+}
+
+#title h1 {
+	display: inline;
+}
+
+#navbar {
+	height: 100px;
+	width: 100%;
+}
+
+#navbar ul {
+	float: right;
+	margin-right: 30%;
+	font-size: 14pt;
+}
+
+#navbar ul li{
+	display: inline-block;
+	margin: 20px;
+}
+
+.footer {
+	text-align: center;
+}
