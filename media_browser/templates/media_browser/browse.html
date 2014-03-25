@@ -10,7 +10,7 @@
 <div class="browse_container">
 	{% for mediaObject in media %}
 	<div class="card">
-		<div class="name">{{mediaObject.title}}</div>
+		<div class="name"><a href={% url 'media_browser.views.single' id=mediaObject.id %}>{{mediaObject.title}}</a></div>
 
 		{% if mediaObject.type == 'IM' %}
 		<img class='media_image' src="{{MEDIA_URL}}{{mediaObject.image}}" alt="">
