@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'news',
     'orderedmodel',
     'south',
+    'playlist',
 )
 
 MIDDLEWARE_CLASSES = (
