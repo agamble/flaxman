@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'media_browser',
     'news',
     'orderedmodel',
-    'south',
     'playlist',
 )
 

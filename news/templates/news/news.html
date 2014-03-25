@@ -1,0 +1,17 @@
+{% extends "flaxman/base.html" %}
+
+{% block content %}
+{% for news_item in news %}
+<div class="news_item">
+	<h2>{{news_item.title}}</h2>
+	<div class="author">{{news_item.author}}</div>
+
+	{% autoescape off %}
+	{{news_item.content}}
+	{% endautoescape %}
+	<div class="date">{{news_item.date}}</div>
+
+</div>
+
+{% endfor %}
+{% endblock content %}
