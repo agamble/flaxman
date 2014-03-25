@@ -13,7 +13,7 @@ MEDIA_TYPE = (
 
 class Media(models.Model):
     title = models.CharField(max_length=255)
-    type = models.CharField(max_length=2, choices=MEDIA_TYPE, help_text='This field is not necessary if you are not specifying the video media type')
+    type = models.CharField(max_length=2, choices=MEDIA_TYPE)
     author = models.CharField(max_length=255)
     video_source = models.CharField(max_length=2, choices=VIDEO_SOURCES, blank=True)
     description = models.TextField()
@@ -24,7 +24,8 @@ class Media(models.Model):
 
 
 class Tags(models.Model):
-    media = models.ForeignKey('Media')
     tag = models.CharField(max_length=255)
-    
+    media = models.ManyToManyField('Media')
+
+
 # Create your models here.
