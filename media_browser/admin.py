@@ -7,7 +7,7 @@ class MediaAdmin(admin.ModelAdmin):
 			'fields': ('title', 'type', 'description', 'author', 'date',)
 			}),
 		('Video', {
-			'fields': ('video_source',),
+			'fields': ('video_source', 'video_id',),
 			'classes': ('collapse',)
 			}),
 		('Audio', {
@@ -18,7 +18,8 @@ class MediaAdmin(admin.ModelAdmin):
 			'fields': ('image',),
 			'classes': ('collapse',)
 			}),
-		)
+		)   
+	verbose_name_plural = "media"
 
 admin.site.register(Media, MediaAdmin)
 
