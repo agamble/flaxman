@@ -1,0 +1,54 @@
+{% extends "flaxman/base.html" %}
+{% load staticfiles %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/single.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="container">
+	<div class="card">
+		<div class="name"><a href={% url 'media_browser.views.single' id=media.id %}>{{media.title}}</a></div>
+		<div class="description">{{media.description}}</div>
+		<div class="author">{{media.author}}</div>
+
+		{% if media.type == 'IM' %}
+		<img class='media_image' src="{{MEDIA_URL}}{{media.image}}" alt="">
+		{% endif %}
+
+		{% if media.type == 'AU' %}
+		<audio src="audio.ogg" controls>
+			<p>Your browser does not support the audio element </p>
+		</audio>
+		{% endif %}
+
+		{% if media.type == 'VI' %}
+
+
+		{% endif %}
+		<div class="author">{{mediaObject.author}}</div>
+	</div>
+</div>
+
+<div class="playlist_box">
+	{% for media_iter in playlist %}
+
+	{# remove duplicate item #}
+	{% if media_iter.id != media.id %}
+	
+	{% if media_iter.type == 'IM' %}
+	<img class='playlist_image' src="{{MEDIA_URL}}{{media.image}}" alt="">
+	{% endif %}
+
+
+
+
+	{# remove duplicate item #}
+	{% endif %}
+
+	{% endfor %}
+
+
+</div>
+{% endblock content %}
