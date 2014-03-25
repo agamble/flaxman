@@ -22,10 +22,24 @@
 		</audio>
 		{% endif %}
 
+
+
 		{% if mediaObject.type == 'VI' %}
 
+		<div class="overlay">
+			{% if mediaObject.video_source == 'YT' %}
+			<img class="video_thumbnail" src="http://i3.ytimg.com/vi/{{mediaObject.video_id}}/0.jpg" alt="">
+			{% endif %}
 
-		{% endif %}
+			{% if mediaObject.video_source == 'VI' %}
+			<img src="video_thumbnail" src="http://i3.ytimg.com/vi/{{media.video_id}}/0.jpg" alt="">
+			{% endif %}
+
+			{% endif %}
+		</div>
+
+
+
 		<div class="author">{{mediaObject.author}}</div>
 	</div>
 	{% endfor %}

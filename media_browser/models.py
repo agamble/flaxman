@@ -16,6 +16,7 @@ class Media(models.Model):
     type = models.CharField(max_length=2, choices=MEDIA_TYPE)
     author = models.CharField(max_length=255)
     video_source = models.CharField(max_length=2, choices=VIDEO_SOURCES, blank=True)
+    video_id = models.CharField(max_length=255, blank=True)
     description = models.TextField()
     date = models.DateField()
     image = models.ImageField(upload_to='media/images/', blank=True)
