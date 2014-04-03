@@ -37,3 +37,7 @@
 .footer {
 	text-align: center;
 }
+
+.ng-cloak {
+	opacity: 0;
+}
