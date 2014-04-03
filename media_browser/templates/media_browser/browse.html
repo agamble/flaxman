@@ -7,11 +7,11 @@
 {% endblock css %}
 
 {% block content %}
-<div class="browse_container">
+<div class="browse_container ng-cloak" ng-app='Flaxman' ng-controller='BrowseController as browse' >
 	{% for mediaObject in media %}
 	<div class="card">
 		<div class="name"><a href={% url 'media_browser.views.single' id=mediaObject.id %}>{{mediaObject.title}}</a></div>
-
+		{$ something $}
 		{% if mediaObject.type == 'IM' %}
 		<img class='media_image' src="{{MEDIA_URL}}{{mediaObject.image}}" alt="">
 		{% endif %}
@@ -22,21 +22,17 @@
 		</audio>
 		{% endif %}
 
-
-
 		{% if mediaObject.type == 'VI' %}
 
-		<div class="overlay">
-			{% if mediaObject.video_source == 'YT' %}
-			<img class="video_thumbnail" src="http://i3.ytimg.com/vi/{{mediaObject.video_id}}/0.jpg" alt="">
-			{% endif %}
+		{% if mediaObject.video_source == 'YT' %}
+		<img class="video_thumbnail" src="http://i3.ytimg.com/vi/{{mediaObject.video_id}}/0.jpg" alt="">
+		{% endif %}
 
-			{% if mediaObject.video_source == 'VI' %}
-			<img src="video_thumbnail" src="http://i3.ytimg.com/vi/{{media.video_id}}/0.jpg" alt="">
-			{% endif %}
+		{% if mediaObject.video_source == 'VI' %}
+		<img src="video_thumbnail" src="http://i3.ytimg.com/vi/{{media.video_id}}/0.jpg" alt="">
+		{% endif %}
 
-			{% endif %}
-		</div>
+		{% endif %}
 
 
 
@@ -46,3 +42,4 @@
 </div>
 
 {% endblock content %}
+
