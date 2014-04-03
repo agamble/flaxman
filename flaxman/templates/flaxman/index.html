@@ -4,8 +4,8 @@
 
 {% block content %}
 
-<div id="media_browser">
-	<div class="card" ng-repeat-start='medium in media' ng-switch on='medium.type'>
+<div id="media_browser" ng-app='Flaxman' ng-controller='BrowseController as browse'>
+	<div class="card">
 
 		<div class="video_card">
 			
