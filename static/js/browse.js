@@ -1,21 +1,29 @@
-flaxman.factory('media', function MediaFactory() {
+flaxman.factory('Media', ['$http',
+    function MediaFactory($http) {
 
-    this.media = [
-        [],
-        [],
-        []
-    ]
-    $http.get('/api/media').success(function(data, status) {
-        for ()
-    })
+        var Media = {};
 
-    return {
-        getNumber: 4
-    };
-});
+        Media.get = function(callback) {
+            $http.get('/api/media.json').success(function(data, status) {
+                callback(data)
 
-flaxman.controller('BrowseController', ['cards', '$scope',
-    function BrowseController(cards, $scope) {
-        $scope.something = cards.getNumber;
+            })
+        }
+        return Media;
+    }
+]);
+
+
+
+flaxman.controller('BrowseController', ['Media',
+    function BrowseController(Media, $scope) {
+        var media = [];
+        Media.get(function(data) {
+            media.push(data.splice(0, Math.ceil(data / 3)));
+            media.push(data.splice(0, Math.ceil(data / 2)));
+            media.push(data);
+            console.log(media);
+        })
+
     }
 ])
