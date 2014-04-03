@@ -35,5 +35,14 @@
 		<p class='footer'>
 			A project by UCL Art Gallery
 		</p>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
+
+		<script src='{% static "js/app.js" %}'></script>
+
+		{% block footer_scripts %}
+
+		{% endblock footer_scripts %}
 	</body>
 	</html>

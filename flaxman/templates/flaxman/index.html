@@ -1,11 +1,30 @@
 {% extends "flaxman/base.html" %}
+{% load staticfiles %}
+
 
 {% block content %}
 
+<div id="media_browser">
+	<div class="card" ng-repeat-start='medium in media' ng-switch on='medium.type'>
 
-<div class="container">
-	This is the homepage
+		<div class="video_card">
+			
+		</div>
+
+		<div class="audio_card">
+			
+		</div>
+
+		<div class="image_card">
+			
+		</div>
+		
+	</div>
 </div>
 
 
 {% endblock content %}
+
+{% block footer_scripts %}
+<script src='{% static "js/browse.js" %}'></script>
+{% endblock footer_scripts %}
