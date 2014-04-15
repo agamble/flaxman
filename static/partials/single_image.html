@@ -1,9 +1,9 @@
 <div class="overlay" ng-click="goHome()">
 </div>
 
-<div class="single_image singlesingle" >
+<div class="single_image singlesingle" ng-cloak>
     <div id="title">{$ media.fields.title $}</div>
-    <img src="/upload/{$ media.fields.image $}" card>
+    <img src="/upload/{$ media.fields.image $}" card ng-cloak>
 
     <div related-content></div>
 </div>

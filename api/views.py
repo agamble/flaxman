@@ -11,7 +11,7 @@ import itertools
 
 
 def media_all(request):
-    media = Media.objects.all()
+    media = Media.objects.all().exclude(playlist__name='Homepage').order_by('?')    
 
     data = serializers.serialize('json', media)
     return HttpResponse(data, content_type='application/json')
@@ -53,6 +53,12 @@ def related_content(request, id):
     playlists = Playlist.objects.filter(media__id=id)
     media = Media.objects.filter(playlist__in=playlists).distinct().exclude(id=id).order_by('?')[:10]
     print media
+    data = serializers.serialize('json', media)
+    return HttpResponse(data, content_type='application/json')
+
+def get_first(request):
+    playlists = Playlist.objects.filter(name='Homepage')
+    media = Media.objects.filter(playlist__in=playlists).distinct().order_by('?')
     data = serializers.serialize('json', media)
     return HttpResponse(data, content_type='application/json')
 
