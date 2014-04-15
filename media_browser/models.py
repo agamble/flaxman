@@ -22,19 +22,23 @@ class Media(models.Model):
     date = models.DateField()
     image = models.ImageField(upload_to='media/images/', blank=True)
     audio = models.FileField(upload_to='media/audio/', blank=True)
-    playlists = models.ManyToManyField(Playlist, through=Playlist.media.through, blank=True)
+    playlists = models.ManyToManyField('playlist.Playlist', related_name='playlists_set+', through=Playlist.media.through, blank=True)
     location_in_gallery = models.CharField(max_length=255)
     summary = models.TextField()
     link = models.URLField()
-
-    verbose_name_plural = "media"
+    
+    class Meta:
+        verbose_name_plural = "media"
 
 
 class Tags(models.Model):
     tag = models.CharField(max_length=255)
     media = models.ManyToManyField('Media')
 
-class ImageChildren(models.Model):
+class ImageChild(models.Model):
     child = models.ImageField(upload_to='media/images/', blank=True)
     media = models.ForeignKey(Media)
+    
+    class Meta:
+        verbose_name_plural = "Image Children"
 
