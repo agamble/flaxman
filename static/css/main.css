@@ -1,6 +1,22 @@
+@font-face
+{
+    font-family: whitney-med;
+    src: url(/static/fonts/Whitney-Medium.otf);
+}
+
+@font-face
+{
+    font-family: whitney-light;
+    src: url(/static/fonts/Whitney-Light.otf);
+}
+
 * {
 	margin: 0;
 	padding: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 .container {
@@ -9,18 +25,27 @@
 	margin: 0 auto;
 }
 
-#title {
-	float: left;
-	margin-top: 12px;
+#header {
+    height: 120px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
 }
 
-#title h1 {
-	display: inline;
+#content {
+    margin-top: 150px;
 }
 
 #navbar {
-	height: 100px;
 	width: 100%;
+    background: #760031;
+    position: absolute;
+    bottom: 0px;
+    padding: 10px;
+}
+
+#navbar a {
+    color: #ffffff;
 }
 
 #navbar ul {
@@ -31,11 +56,27 @@
 
 #navbar ul li{
 	display: inline-block;
-	margin: 20px;
+	margin-right: 50px;
+    font-family: Whitney-Light, sans-serif;
+}
+
+#title {
+    color: #333333;
+    font-family: Whitney-Light, sans-serif;
+    margin-top: 20px;
+    font-size: 16pt;
 }
 
 .footer {
 	text-align: center;
+    width: 100%;
+    background: #760031;
+    position: fixed;
+    bottom: 20px;
+    padding: 10px;
+    color: #e6e6e6;
+    font-family: Whitney-Light, sans-serif;
+
 }
 
 .ng-cloak {

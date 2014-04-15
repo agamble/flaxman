@@ -3,7 +3,9 @@ from media_browser.models import Media
 from playlist.models import Playlist
 from django.core import serializers
 from django.http import HttpResponse
+from django.forms.models import model_to_dict
 import json
+import itertools
 
 # Create your views here.
 
@@ -16,8 +18,7 @@ def media_all(request):
 
 def media_single(request, id):
     media = Media.objects.get(id=id)
-
-    data = serializers.serialize('json', media)
+    data = serializers.serialize('json', [media,])
     return HttpResponse(data, content_type='application/json')
 
 
@@ -41,8 +42,17 @@ def playlists_all(request):
 
 def playlists_single(request, id):
     context = {}
-    PlaylistQuery = Playlist.objects.get(id=id).prefetch_related('media')
+    PlaylistQuery = Playlist.objects.filter(media=id).prefetch_related('media')
 
     context['playlists'] = list(PlaylistQuery)
 
     context['playlists'][0]['media'] = list(PlaylistQuery.media.all())
+
+def related_content(request, id):
+    context = {}
+    playlists = Playlist.objects.filter(media__id=id)
+    media = Media.objects.filter(playlist__in=playlists).distinct().exclude(id=id).order_by('?')[:10]
+    print media
+    data = serializers.serialize('json', media)
+    return HttpResponse(data, content_type='application/json')
+
