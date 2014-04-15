@@ -1,4 +1,4 @@
-var flaxman = angular.module('Flaxman', []).config(function($interpolateProvider) {
+var flaxman = angular.module('Flaxman', ['ngRoute']).config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('{$');
     $interpolateProvider.endSymbol('$}');
 });

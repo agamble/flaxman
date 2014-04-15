@@ -1,27 +1,24 @@
 {% extends "flaxman/base.html" %}
 {% load staticfiles %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock css %}
+
 
 {% block content %}
 
-<div id="media_browser" ng-app='Flaxman' ng-controller='BrowseController as browse'>
-	<div class="card">
+<div id="background"></div>
 
-		<div class="video_card">
-			
-		</div>
+<div id="media_browser" ng-controller='BrowseController as browse'>
+    
+    <div ng-repeat='row in media' ng-include='"{% static "partials/row.html" %}"'>
+    </div>
 
-		<div class="audio_card">
-			
-		</div>
-
-		<div class="image_card">
-			
-		</div>
-		
-	</div>
 </div>
 
+<div ng-view>
+</div>
 
 {% endblock content %}
 
