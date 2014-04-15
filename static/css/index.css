@@ -6,10 +6,9 @@
 }
 
 #background {
-    background-image:url('/static/bg.jpg');
-    background-position:center; 
-    background-repeat:no-repeat;
-    background-attachment:fixed;
+    background-image: url('/static/bg.jpg');
+    background-position: 50% 0;
+    background-repeat: no-repeat;
     top: 0;
     left: 0;
     width: 100%;
@@ -103,7 +102,7 @@
 }
 
 .related .card {
-        background-color: transparent;
+    background-color: transparent;
     float: left;
     margin-right: 20px;
     /*border: 1px solid #999999;*/

@@ -44,15 +44,8 @@ flaxman.config(function($routeProvider, $locationProvider) {
 
 flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
     function BrowseController(Media, $scope, $interval) {
-        Media.getAll(function(data) {
-            var first = data.splice(0, Math.ceil(data.length / 3));
-            var second = data.splice(0, Math.ceil(data.length / 2));
-            var third = data;
-            $scope.media = [
-                first, second, third
-            ]
-            console.log(first)
-        })
+        $scope.media = Media.home
+        console.log(Media.home)
 
         $scope.width = function() {
             var new_width = 0;
@@ -73,8 +66,9 @@ flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
 
 flaxman.controller('ImageSingleController', ['Media', '$scope', '$routeParams', '$location',
     function BrowseController(Media, $scope, $routeParams, $location) {
-        Media.getSingle($routeParams.id, function(data) {
-            $scope.media = data[0];
+        Media.getSingle($routeParams.id).success(function(data) {
+            $scope.media = data[0]
+
         })
 
         Media.getRelated($routeParams.id, function(data) {
