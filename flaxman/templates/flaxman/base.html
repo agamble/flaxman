@@ -15,34 +15,39 @@
 		{% endblock css %}
 
 	</head>
-	<body>
-		<div class="container">
-			<div id="navbar">
-				<div id="title"><h1>The Flaxman Exchange</h1></div>
-				<ul>
-					<li><a href={% url 'about' %}>About</a></li>
-					<li><a href={% url 'news.views.news' %}>News</a></li>
-					<li><a href={% url 'media_browser.views.browse' %}>Media</a></li>
-				</ul>
-			</div>	
-		</div>
+	<body ng-app='Flaxman'>
+		<div id="header">
+            <div id="title" class='container'><h1>The Flaxman Exchange</h1></div>
+
+            <div id="navbar">
+                <ul>
+                 <li><a href={% url 'about' %}>About</a></li>
+                 <li><a href={% url 'news.views.news' %}>News</a></li>
+                 <li><a href={% url 'media_browser.views.browse' %}>Media</a></li>
+             </ul>
+         </div>	
+     </div>
+
+     <div id="content">
+         {% block content %}
+
+         {% endblock content %}
+     </div>
 
 
-		{% block content %}
-		
-		{% endblock content %}
+     <p class='footer'>
+       A project by UCL Art Gallery
+   </p>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
 
-		<p class='footer'>
-			A project by UCL Art Gallery
-		</p>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
+   <script src='{% static "js/app.js" %}'></script>
+   <script src='{% static "js/factories.js" %}'></script>
 
-		<script src='{% static "js/app.js" %}'></script>
+   {% block footer_scripts %}
 
-		{% block footer_scripts %}
-
-		{% endblock footer_scripts %}
-	</body>
-	</html>
+   {% endblock footer_scripts %}
+</body>
+</html>
