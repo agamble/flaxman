@@ -9,13 +9,14 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'flaxman.views.home', name='home'),
-    url(r'^about$', 'flaxman.views.about', name='about'),
+    url(r'^about/$', 'flaxman.views.about', name='visit'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^news/', include('news.urls')),
     url(r'^media/', include('media_browser.urls')),
     url(r'^api/', include('api.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^tinymce/', include('tinymce.urls')),
     ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
