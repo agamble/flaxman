@@ -10,10 +10,10 @@ class MediaAdmin(admin.ModelAdmin):
     list_display = ('title', 'type',)
     fieldsets = (
         (None, {
-            'fields': ('title', 'type', 'description', 'author', 'date', 'playlists',)
+            'fields': ('title', 'type', 'description', 'date', 'playlists', 'location_in_gallery', 'location_in_brochure', 'link', 'thumbnail', )
             }),
         ('Video', {
-            'fields': ('video_source', 'video_id',),
+            'fields': ('video_id',),
             'classes': ('collapse',)
             }),
         ('Audio', {
@@ -21,7 +21,11 @@ class MediaAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
             }),
         ('Image', {
-            'fields': ('image',),
+            'fields': ('image', 'image_caption',),
+            'classes': ('collapse',)
+            }),
+        ('Text', {
+            'fields': ('summary',),
             'classes': ('collapse',)
             }),
         )   

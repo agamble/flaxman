@@ -1,53 +1,93 @@
 {% load staticfiles %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>{% block title %}
-		The Flaxman Exchange2
-		{% endblock title %}</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="stylesheet" href="{% static 'css/main.css' %}">
-        <meta name="viewport" content="width=500, initial-scale=1">
-		{% block css %}
+    <meta charset="UTF-8">
+    <title>{% block title %}
+        The Flaxman Exchange2
+        {% endblock title %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
-		{% endblock css %}
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-	</head>
-	<body ng-app='Flaxman'>
-		<div id="header">
-            <div id="title" class='container'><h1>The Flaxman Exchange</h1></div>
+        {% block css %}
 
-            <div id="navbar">
-                <ul>
-                 <li><a href={% url 'about' %}>About</a></li>
-                 <li><a href={% url 'news.views.news' %}>News</a></li>
-                 <li><a href={% url 'media_browser.views.browse' %}>Media</a></li>
-             </ul>
-         </div>	
-     </div>
+        {% endblock css %}
 
-     <div id="content">
-         {% block content %}
+    </head>
+    <body ng-app='Flaxman'>
+      <div id="header" ng-controller='HeaderController'>
+        <div id="title" class='container' >
+            <img src="/static/header.png" alt="">
+            <h1>The Flaxman Exchange</h1>
+        </div>
+        <div id='navbar' class='navbar navbar-default'>
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                  <span class="icon-bar white"></span>
+                  <span class="icon-bar white"></span>
+                  <span class="icon-bar white"></span>
+              </button> 
+              <a class="navbar-brand" href="#">The Flaxman Gallery</a>
+          </div>
 
-         {% endblock content %}
-     </div>
+          <div class='navbar-collapse collapse ' id='navbar-elements'>
+            <div class='container'> 
+                <ul class='nav navbar-nav navbar-right'>
+                   <li><a href='/#/explore'>Explore</a></li>
+                   <li><a href='/#/visit'>Visit</a></li>
+                   <li ng-repeat='playlist in headerPlaylists'>
+                    <a href="/#/playlist/{$ playlist.pk $}"/>{$ playlist.fields.name $}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>  
+</div>
+
+<div id="content">
+   {% block content %}
+
+   {% endblock content %}
+</div>
 
 
-     <p class='footer'>
-       A project by UCL Art Gallery
-   </p>
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
+        <div id='footer' class='navbar navbar-default'>
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-elements">
+                  <span class="icon-bar white"></span>
+                  <span class="icon-bar white"></span>
+                  <span class="icon-bar white"></span>
+              </button> 
+          </div>
 
-   <script src='{% static "js/app.js" %}'></script>
-   <script src='{% static "js/factories.js" %}'></script>
+          <div class='navbar-collapse collapse ' id='footer-elements'>
+            <div class='container'> 
+                <ul class='nav navbar-nav navbar-left'>
+                   <li><a href='/#/about/art-museum'>UCL Art Museum</a></li>
+                   <li><a href='/#/about/contact'>Contact</a></li>
+                   <li><a href='/#/about/special-collection'>UCL Special Collection</a></li>
+                   <li><a href='/#/about/partners'>Partners</a></li>
+            </ul>
+        </div>
+    </div>
+</div>  
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
 
-   {% block footer_scripts %}
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-sanitize.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
 
-   {% endblock footer_scripts %}
+<script src='{% static "js/app.js" %}'></script>
+<script src='{% static "js/factories.js" %}'></script>
+<script src='{% static "js/ui-bootstrap.js" %}'></script>
+{% block footer_scripts %}
+
+{% endblock footer_scripts %}
 </body>
 </html>

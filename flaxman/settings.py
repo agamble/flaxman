@@ -40,9 +40,9 @@ INSTALLED_APPS = (
     'flaxman',
     'media_browser',
     'news',
-    'orderedmodel',
     'playlist',
     'api',
+    'tinymce',
 )
 
 MIDDLEWARE_CLASSES = (

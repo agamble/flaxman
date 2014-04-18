@@ -1,74 +1,36 @@
-// window.onload = function() {
-//     //adding the event listerner for Mozilla
-//     if (window.addEventListener)
-//         document.addEventListener('DOMMouseScroll', moveObject, false);
-
-//     //for IE/OPERA etc
-//     document.onmousewheel = moveObject;
-// }
-
-// function moveObject(event) {
-//     if (event.wheelDelta) {
-
-//         // IE and Opera
-//         delta = event.wheelDelta / 60;
-
-//     } else if (event.detail) {
-
-//         // W3C
-//         delta = -event.detail / 2;
-//     }
-//     document.getElementById("fixed").scrollLeft -= delta * 50;
-// }
-
-flaxman.config(function($routeProvider, $locationProvider) {
-    $routeProvider
-        .when('/media/image/:id', {
-            templateUrl: "/static/partials/single_image.html",
-            controller: 'ImageSingleController',
-        })
-        .when('/media/video/:id', {
-            templateUrl: '/static/partials/video_single.html',
-            controller: 'VideoSingleController',
-        })
-        .when('/media/audio/:id', {
-            templateUrl: '/static/partials/audio_single.html',
-            controller: 'AudioSingleController',
-        })
-        .otherwise({
-            redirectTo: '/'
-        });
-})
-
-
-
 flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
     function BrowseController(Media, $scope, $interval) {
-        $scope.media = Media.home
+
+        $scope.media = Media.home;
         console.log(Media.home)
 
-        $scope.width = function() {
-            var new_width = 0;
-            $('#row1 > *').width(function(i, w) {
-                new_width += w;
-            });
-            if (new_width < 1000) {
-                new_width = 10000;
+        $scope.testForThumbnail = function(card) {
+            if (card.fields.thumbnail) {
+                return ""
+            } else {
+                return "no_thumbnail"
             }
-            return {
-                width: new_width + 300 + "px",
-            };
         }
 
-        // $interval($scope.width(), 100);
+        $scope.addMore = function() {
+            $scope.media = $scope.media
+        }
     }
 ])
 
-flaxman.controller('ImageSingleController', ['Media', '$scope', '$routeParams', '$location',
-    function BrowseController(Media, $scope, $routeParams, $location) {
-        Media.getSingle($routeParams.id).success(function(data) {
-            $scope.media = data[0]
+flaxman.controller('PlaylistController', ['$scope', 'Playlist', '$routeParams',
+    function PlaylistController($scope, Playlist, $routeParams) {
+        Playlist.getSingle($routeParams.id)
+        $scope.media = Playlist.home;
+    }
+])
 
+flaxman.controller('ImageSingleController', ['Media', '$scope', '$routeParams', '$location', '$sce',
+    function BrowseController(Media, $scope, $routeParams, $location, $sce) {
+        Media.getSingle($routeParams.id).success(function(data) {
+            $scope.media = data.splice(0, 1)[0];
+            $scope.children = data;
+            console.log($scope.media)
         })
 
         Media.getRelated($routeParams.id, function(data) {
@@ -79,27 +41,160 @@ flaxman.controller('ImageSingleController', ['Media', '$scope', '$routeParams', 
             $location.path('/');
         }
 
-        $scope.setSingleWidth = function() {
-            var width = $('.single_image img').width() + 300;
-            return {
-                width: width + "px",
-                'margin-left': -width / 2 + "px"
-            }
+
+    }
+])
+
+flaxman.controller('VideoSingleController', ['Media', '$scope', '$routeParams', '$location', '$sce',
+    function BrowseController(Media, $scope, $routeParams, $location, $sce) {
+        Media.getSingle($routeParams.id).success(function(data) {
+            $scope.media = data[0];
+        })
+
+        Media.getRelated($routeParams.id, function(data) {
+            $scope.related = data;
+        })
+
+        $scope.goHome = function() {
+            $location.path('/');
+        }
+        $scope.trustUrl = function(url) {
+            return $sce.trustAsResourceUrl(url);
         }
     }
 ])
 
-flaxman.directive('card', function() {
-    return function(scope, elm, attrs) {
-        elm.on('load', function() {
-            var width = $(elm).width() + 300;
-            var height = $(elm).height() + 100;
-            elm.parent().css('width', width + "px");
-            elm.parent().css('margin-left', (-width / 2) + "px");
-            elm.parent().css('height', height + "px");
+flaxman.controller('AudioSingleController', ['Media', '$scope', '$routeParams', '$location', '$sce',
+    function BrowseController(Media, $scope, $routeParams, $location, $sce) {
+        Media.getSingle($routeParams.id).success(function(data) {
+            $scope.media = data[0];
+            console.log($scope.media)
+        })
+
+        Media.getRelated($routeParams.id, function(data) {
+            $scope.related = data;
+        })
+
+        $scope.goHome = function() {
+            $location.path('/');
+        }
+        $scope.trustUrl = function(url) {
+            return $sce.trustAsResourceUrl(url);
+        }
+
+
+    }
+])
+
+flaxman.controller('TextSingleController', ['Media', '$scope', '$routeParams', '$location', '$sce',
+    function BrowseController(Media, $scope, $routeParams, $location, $sce) {
+        Media.getSingle($routeParams.id).success(function(data) {
+            $scope.media = data[0];
+            console.log($scope.media)
+        })
+
+        Media.getRelated($routeParams.id, function(data) {
+            $scope.related = data;
+        })
+
+        $scope.goHome = function() {
+            $location.path('/');
+        }
+        $scope.trustUrl = function(url) {
+            return $sce.trustAsResourceUrl(url);
+        }
+    }
+])
+
+flaxman.controller('AboutController', ['About', '$scope',
+    function AboutController(About, $scope) {
+        About.getArtMuseum.success(function(data) {
+            $scope.artMuseum = data[0];
+        })
+        About.getContact.success(function(data) {
+            $scope.contact = data[0];
+        })
+        About.getSpecialCollections.success(function(data) {
+            $scope.specialCollections = data[0];
+        })
+        About.getPartners.success(function(data) {
+            $scope.partners = data;
+        })
+        About.getVisit.success(function(data) {
+            $scope.visit = data[0];
+            console.log($scope.visit)
         })
     }
-})
+])
+
+flaxman.directive('heightFixer', [
+
+    function() {
+        // Runs during compile
+        return {
+            // name: '',
+            // priority: 1,
+            // terminal: true,
+            // scope: {}, // {} = isolate, true = child, false/undefined = no change
+            // controller: function($scope, $element, $attrs, $transclude) {},
+            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+            // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+            // template: '',
+            // templateUrl: '',
+            // replace: true,
+            // transclude: true,
+            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+            link: function($scope, iElm, iAttrs, controller) {}
+        };
+    }
+]);
+
+
+// flaxman.directive('card', function() {
+//     return function(scope, elm, attrs) {
+//         var next = function() {
+
+//         }
+
+//         // elm.on('click', function(e) {
+//         //     var pos = $(this).position();
+//         //     var x = e.pageX - pos.left;
+//         //     console.log(e.pageX)
+
+//         //     if (x > elm.width() / 2) {
+//         //         next();
+//         //         console.log('next')
+//         //     } else {
+//         //         previous();
+//         //         console.log('prev')
+
+//         //     }
+//         // })
+//         scope.$watch('media', function(data) {
+//             if (( !! data.fields.description) && !flaxman.isMobile()) {
+//                 elm.on('load', function() {
+//                     var width = $(elm).width() + 300;
+//                     var height = $(elm).height() + 100;
+//                     var parent = $('#single');
+//                     parent.css('width', width + "px");
+//                     parent.css('margin-left', (-width / 2) + "px");
+//                     parent.css('height', height + "px");
+//                 })
+//             } else {
+//                 elm.on('load', function() {
+//                     var width = $(elm).width();
+//                     var height = $(elm).height() + 100;
+//                     var parent = $('#single');
+//                     parent.css('width', width + "px");
+//                     parent.css('margin-left', (-width / 2) + "px");
+//                     parent.css('height', height + "px");
+//                 })
+
+//             }
+//         })
+
+//     }
+// })
 
 flaxman.directive('relatedContent',
     function() {
@@ -110,6 +205,47 @@ flaxman.directive('relatedContent',
     }
 );
 
+flaxman.directive('rowWidth', ['$timeout',
+
+    function($timeout) {
+        // Runs during compile
+        return {
+            // name: '',
+            // priority: 1,
+            // terminal: true,
+            // scope: {}, // {} = isolate, true = child, false/undefined = no change
+            // controller: function($scope, $element, $attrs, $transclude) {},
+            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+            // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+            // template: '',
+            // templateUrl: '',
+            // replace: true,
+            // transclude: true,
+            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+            link: function($scope, iElm, iAttrs, controller) {
+                var width;
+                var setWidth = function() {
+                    var new_width = 0;
+                    angular.forEach(iElm.children(), function(e, i) {
+                        new_width += $(e).width() + 20;
+                    });
+                    console.log(new_width)
+                    $(iElm).css('width', new_width + 500 + 'px');
+                    return new_width;
+                }
+
+                $timeout(function() {
+
+                    elm.bind('scroll', function() {
+                        if (raw.scrollLeft + raw.offsetWidth >= raw.scrollWidth) {
+                            $scope.addMore()
+                        }
+                    })
+                }, 1000);
+            }
+        }
+    }
+]);
 
 // flaxman.directive("setStyle", function() {
 //     return {
