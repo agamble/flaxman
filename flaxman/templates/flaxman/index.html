@@ -11,15 +11,10 @@
 
 <div id="background"></div>
 
-<div id="media_browser" ng-controller='BrowseController as browse'>
-    
-    <div ng-repeat='row in media' ng-include='"{% static "partials/row.html" %}"'>
-    </div>
-
-</div>
-
 <div ng-view>
 </div>
+
+
 
 {% endblock content %}
 

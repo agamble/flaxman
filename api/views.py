@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from media_browser.models import Media
+from media_browser.models import ImageChild
 from playlist.models import Playlist
+from flaxman.models import *
 from django.core import serializers
 from django.http import HttpResponse
 from django.forms.models import model_to_dict
@@ -17,8 +19,9 @@ def media_all(request):
     return HttpResponse(data, content_type='application/json')
 
 def media_single(request, id):
-    media = Media.objects.get(id=id)
-    data = serializers.serialize('json', [media,])
+    media = Media.objects.filter(id=id)
+    children = ImageChild.objects.filter(media=id)
+    data = serializers.serialize('json', list(itertools.chain(media, children)))
     return HttpResponse(data, content_type='application/json')
 
 
@@ -42,11 +45,10 @@ def playlists_all(request):
 
 def playlists_single(request, id):
     context = {}
-    PlaylistQuery = Playlist.objects.filter(media=id).prefetch_related('media')
+    PlaylistQuery = Media.objects.filter(playlist__in=id)
 
-    context['playlists'] = list(PlaylistQuery)
-
-    context['playlists'][0]['media'] = list(PlaylistQuery.media.all())
+    data = serializers.serialize('json', PlaylistQuery)
+    return HttpResponse(data, content_type='application/json')
 
 def related_content(request, id):
     context = {}
@@ -62,3 +64,32 @@ def get_first(request):
     data = serializers.serialize('json', media)
     return HttpResponse(data, content_type='application/json')
 
+def get_header(request):
+    playlists = Playlist.objects.filter(header=True)
+    data = serializers.serialize('json', playlists)
+    return HttpResponse(data, content_type='application/json')
+
+def get_about_art_museum(request):
+    art_gallery = AboutArtGallery.objects.all()[0]
+    data = serializers.serialize('json', [art_gallery, ])
+    return HttpResponse(data, content_type='application/json')
+
+def get_about_special_collection(request):
+    special_collection = AboutSpecialCollection.objects.all()[0]
+    data = serializers.serialize('json', [special_collection, ])
+    return HttpResponse(data, content_type='application/json')
+
+def get_about_contact(request):
+    contact = AboutContact.objects.all()[0]
+    data = serializers.serialize('json', [contact, ])
+    return HttpResponse(data, content_type='application/json')
+
+def get_about_partners(request):
+    partners = AboutPartner.objects.all()
+    data = serializers.serialize('json', partners)
+    return HttpResponse(data, content_type='application/json')
+
+def get_about_visit(request):
+    visit = AboutVisit.objects.all()
+    data = serializers.serialize('json', visit)
+    return HttpResponse(data, content_type='application/json')

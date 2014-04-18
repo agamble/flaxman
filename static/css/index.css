@@ -2,7 +2,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    padding-left: 20px;
+    margin-left: 50px;
 }
 
 #background {
@@ -14,45 +14,53 @@
     width: 100%;
     height: 100%;
     position: fixed;
-    z-index: -1;
+    z-index: -2;
 }
 
 .card {
     background-color: #ffffff;
     float: left;
-    height: 150px;
-    margin: 5px;
+    height:100%;
+    padding: 10px;
     margin-right: 20px;
-    /*border: 1px solid #999999;*/
-    padding: 15px;
-    /*box-shadow: 5px -5px 5px #191919;*/
-    position: relative;
 }
 
-.audio_card {
+.audio_card { 
     width: 300px;
 }
 
-.image_card {
+.inner_card {
     height: 100%;
 }
 
-.image_card img {
+.card img {
+    position: relative;
     height: 100%;
 }
 
 .row {
-    overflow: scroll;
     white-space: nowrap;
     width: 10000px;
+    overflow: hidden;
+    height: 30%;
+    position: absolute;
+    margin-top: 10px;
 }
 
 #row1 {
     margin-left: 30px;
+    vertical-align: top;
 }
+
+#row2 {
+    top: 34%;
+}
+
+
 
 #row3 {
     margin-left: 40px;
+    bottom: 0px;
 }
 
 .overlay {
@@ -63,52 +71,161 @@
     height: 100%;
     background-color: #4f4f4f;
     opacity: 0.6;
-    z-index: 2;
+    z-index: 0;
 }
 
-.single_image {
-    opacity: 1; 
-    position: fixed;
-    height: 400px;
+#single {
     background-color: #e6e6e6;
-    z-index: 3;
-    top: 150px;
-    left: 50%;
-    margin-left: -480px;
+    z-index: 10;
     padding-left: 20px;
+    padding-right: 0px;
+    position: relative;
 }
 
-.single_image img {
+.carousel {
+    float: right;
+    overflow: visible !important;
+}
+
+.carousel img {
     height: 400px;
-    position: absolute;
-    right: 0;
-    top: 0;
+    max-height: 400px;
 }
 
-.single .row { 
-    height: 50px;
-} 
+.carousel-inner {
+}
 
-/*related content*/
+.image_caption {
+    left: 0px;
+    font-family: 'Georgia', serif;
+    font-size: 12pt;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgba(230,230,230, 0.5);
+    z-index: 5;
+    padding-top: 10px;
+}
+
+.carousel-indicators {
+    bottom: 40px;
+}
+
+.text_content {
+    float: left;
+    padding: 40px;
+    width: 400px;
+    font-family: 'whitney-med', serif;
+    min-height: 400px;
+}
+
+
+.text_content #media_title {
+    font-size: 20pt;
+}
+
+#img_no_children {
+    width: 50%;
+    height: 400px;
+    max-height: 500px;
+    float: right;
+    text-align: right;
+}
+
+#img_no_children img {
+    max-height: 400px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+#img_no_children .single_image_caption {
+    font-family: 'Georgia', serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.single_image.container {
+    padding-right: 0px;
+}
+
+.text_content #date, .text_content #author {
+    color: #4c4c4c;
+}
 
 .related {
-    position: fixed;
-    bottom: 50px;
-    width: 100%;
+    clear:both;
+    height: 170px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-bottom: 50px;
+}
+.related a {
+    margin: 10px;
+    margin-right: 20px;
+    float: left;
+    display: block;
 }
 
 .related img {
-    height: 100%;
+    height: 100px;
+    margin-bottom: 200px;
 }
 
-.related .card {
-    background-color: transparent;
-    float: left;
-    margin-right: 20px;
-    /*border: 1px solid #999999;*/
-    /*box-shadow: 5px -5px 5px #191919;*/
-    position: relative;
-    height: 60px;
-    width: auto;
+.text_content > div {
+    margin: 10px;
+}
 
+#vimeo_video {
+    float: right;
+}
+
+.single_audio {
+    width: 60%;
+}
+
+audio {
+    float: right;
+    margin-top: 100px;
+    margin-right: 50px;
+}
+
+.single_text {
+    width: 50%;
+}
+
+.no_thumbnail {
+    width: 200px;
+    display: table;
+
+}
+
+.no_thumbnail a {
+    white-space: normal;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+/*about*/
+
+.about-card {
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+}
+
+.about-card h2 {
+    padding-bottom: 30px;
+}
+
+img.partner_logo {
+    width: 40%;
+}
+
+a#map {
+    margin-bottom: 40px;
 }

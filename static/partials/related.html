@@ -1,12 +1,18 @@
-<div class="related">
-    <div class="card" ng-repeat='card in related' ng-switch on='card.fields.type'> 
-        <div ng-switch-when='VI' class="video_card"  >
-        </div>
-        <div ng-switch-when='AU' class="audio_card">
-        </div>
-        <div ng-switch-when='IM' class="image_card">
-            <a href='/#/media/image/{$ card.pk $}'><img src="/upload/{$ card.fields.image $}" alt=""></a>
-        </div >
+<h4>Related Items</h4>
+<div ng-repeat='card in related' ng-switch on='card.fields.type'> 
+    <div ng-switch-when='VI'>
+        <a href='/#/media/video/{$ card.pk $}'>
+            <img ng-src="/upload/{$ card.fields.thumbnail $}" alt="">
+        </a>
     </div>
-    
-</div>
+    <div ng-switch-when='AU' >
+        <a href='/#/media/audio/{$ card.pk $}'>
+            <img ng-src="/upload/{$ card.fields.thumbnail $}" alt="">
+        </a>
+    </div>
+    <div ng-switch-when='IM'>
+        <a href='/#/media/image/{$ card.pk $}'>
+            <img ng-src="/upload/{$ card.fields.thumbnail $}" alt="">
+        </a>
+    </div>
+</div> 
