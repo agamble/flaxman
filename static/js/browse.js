@@ -40,8 +40,6 @@ flaxman.controller('ImageSingleController', ['Media', '$scope', '$routeParams', 
         $scope.goHome = function() {
             $location.path('/');
         }
-
-
     }
 ])
 
