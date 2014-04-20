@@ -101,11 +101,13 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/upload/'
 
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = BASE_DIR + '/media/'
 # STATIC_ROOT = '/Users/alexander/workspace/flaxman/static/'
 
+print BASE_DIR
+
 STATICFILES_DIRS = ( 
-      '/Users/alexander/workspace/flaxman/static/',  
+      BASE_DIR + '/static/',  
 )
 
-STATIC_ROOT = '/Users/alexander/workspace/flaxman/static-collected/'
+STATIC_ROOT = BASE_DIR + '/static-collected/'
