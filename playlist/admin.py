@@ -1,12 +1,11 @@
 from django.contrib import admin
-from orderedmodel import OrderedModelAdmin
 
 from playlist.models import Playlist
 
 # Register your models here.
 
-class PlaylistAdmin(OrderedModelAdmin):
-	list_display = ['media', 'reorder']
+class PlaylistAdmin(admin.ModelAdmin):
+	list_display = ['media',]
 
 
 admin.site.register(Playlist, PlaylistAdmin)

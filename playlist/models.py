@@ -1,5 +1,4 @@
 from django.db import models
-from orderedmodel import OrderedModel
 
 # Create your models here.
 class Playlist(models.Model):
