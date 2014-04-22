@@ -1,0 +1,230 @@
+#media_browser {
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin-left: 50px;
+}
+
+#background {
+    background-image: url('/static/bg.jpg');
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -2;
+}
+
+.card {
+    background-color: #ffffff;
+    height:100%;
+    padding: 10px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.audio_card { 
+    width: 300px;
+}
+
+.inner_card {
+    height: 100%;
+}
+
+.card img {
+    position: relative;
+    height: 100%;
+}
+
+.row {
+    white-space: nowrap;
+    overflow: hidden;
+    height: 30%;
+    position: absolute;
+    margin-top: 10px;
+}
+
+#row1 {
+    margin-left: 30px;
+    vertical-align: top;
+}
+
+#row2 {
+    top: 34%;
+}
+
+
+
+#row3 {
+    margin-left: 40px;
+    bottom: 0px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4f4f4f;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#single {
+    background-color: #e6e6e6;
+    z-index: 10;
+    padding-left: 20px;
+    padding-right: 0px;
+    position: relative;
+}
+
+.carousel {
+    float: right;
+    overflow: visible !important;
+}
+
+.carousel img {
+    height: 400px;
+    max-height: 400px;
+}
+
+.carousel-inner {
+}
+
+.image_caption {
+    left: 0px;
+    font-family: 'Georgia', serif;
+    font-size: 12pt;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgba(230,230,230, 0.5);
+    z-index: 5;
+    padding-top: 10px;
+}
+
+.carousel-indicators {
+    bottom: 40px;
+}
+
+.text_content {
+    float: left;
+    padding: 40px;
+    width: 400px;
+    font-family: 'whitney-med', serif;
+    min-height: 400px;
+}
+
+
+.text_content #media_title {
+    font-size: 20pt;
+}
+
+#img_no_children {
+    width: 50%;
+    height: 400px;
+    max-height: 500px;
+    float: right;
+    text-align: right;
+}
+
+#img_no_children img {
+    max-height: 400px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+#img_no_children .single_image_caption {
+    font-family: 'Georgia', serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.single_image.container {
+    padding-right: 0px;
+}
+
+.text_content #date, .text_content #author {
+    color: #4c4c4c;
+}
+
+.related {
+    clear:both;
+    height: 170px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-bottom: 50px;
+}
+.related a {
+    margin: 10px;
+    margin-right: 20px;
+    float: left;
+    display: block;
+}
+
+.related img {
+    height: 100px;
+    margin-bottom: 200px;
+}
+
+.text_content > div {
+    margin: 10px;
+}
+
+#vimeo_video {
+    float: right;
+}
+
+.single_audio {
+    width: 60%;
+}
+
+audio {
+    float: right;
+    margin-top: 100px;
+    margin-right: 50px;
+}
+
+.single_text {
+    width: 50%;
+}
+
+.no_thumbnail {
+    width: 200px;
+    display: table;
+
+}
+
+.no_thumbnail a {
+    white-space: normal;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+
+/*about*/
+
+.about-card {
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+}
+
+.about-card h2 {
+    padding-bottom: 30px;
+}
+
+img.partner_logo {
+    width: 40%;
+}
+
+a#map {
+    margin-bottom: 40px;
+}
