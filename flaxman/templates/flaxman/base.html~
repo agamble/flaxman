@@ -95,6 +95,8 @@
 var c = "original"; //the global c is declared to hold everything
 var d = [[],[],[]]; //the global d to hold the current array to be displayed
 var counter = 0; //how many times the page has been scrolled
+var number_of_cards_in_each_row_to_load_at_start = 1; //self explanatory
+var incrementer = 2; //how many cards are added per row whenever user scrolls to end
 </script>
 <script src='/static/js/app.js'></script> 
 <script src='/static/js/factories.js'></script>
@@ -104,7 +106,7 @@ var counter = 0; //how many times the page has been scrolled
 <script>   
 $(function() {
             $("html, body").mousewheel(function(event, delta) {
-                this.scrollLeft -= (delta * 90);
+                this.scrollLeft -= (delta * 50);
             });
         });
   $(function () {
@@ -114,14 +116,14 @@ $(function() {
                  if ($win.scrollLeft() === 0){}
                      //alert('Scrolled to Page Left');
                  else if ($win.width() + $win.scrollLeft() == $(document).width()) {
-		counter++;     
 //angular.element('[ng-controller="BrowseController"]').scope().media = [];
 
-for (var i = 0; i < 1; i++){
+for (var i = 0; i < incrementer; i++){
 d[0][counter+i]=c[0][counter+i];
 d[1][counter+i]=c[1][counter+i];
 d[2][counter+i]=c[2][counter+i];
 }
+		counter+= incrementer;     
 
 angular.element($('#media_browser')).scope().media=d; 
 // Update page to reflect changed variables
