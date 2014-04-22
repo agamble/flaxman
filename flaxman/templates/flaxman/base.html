@@ -95,7 +95,6 @@
 var c = "original"; //the global c is declared to hold everything
 var d = [[],[],[]]; //the global d to hold the current array to be displayed
 var counter = 0; //how many times the page has been scrolled
-alert("counter is: " + counter);
 </script>
 <script src='/static/js/app.js'></script> 
 <script src='/static/js/factories.js'></script>
@@ -117,11 +116,8 @@ angular.$externalBroadcast = function (selector, event, message) {
 
              $win.scroll(function () {
                  if ($win.scrollLeft() === 0)
-                     alert('Scrolled to Page Left');
                  else if ($win.width() + $win.scrollLeft() == $(document).width()) {
 		counter++;     
-		alert("counter is now:"+counter);
-                     alert('Scrolled to Page Right');
 angular.$lel();
 //angular.element('[ng-controller="BrowseController"]').scope().media = [];
 
@@ -131,12 +127,10 @@ d[1][counter+i]=c[1][counter+i];
 d[2][counter+i]=c[2][counter+i];
 }
 
-alert("d is now:"+d);
 angular.element($('#media_browser')).scope().media=d; 
 // Update page to reflect changed variables
 //angular.element('[ng-controller="BrowseController"]').scope().$apply();
 angular.element($('#media_browser')).scope().$apply();
-		     alert("request succeeded!");
                  }
              });
          }); 
