@@ -1,18 +1,20 @@
-     
+{% load staticfiles %}     
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>
+    <title>{% block title %}
         The Flaxman Exchange2
-        </title>
+        {% endblock title %}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        {% block css %}
 
+        {% endblock css %}
         
 <link rel="stylesheet" href="/static/css/index.css">
 <link rel="stylesheet" href="/static/css/mobile.css">
@@ -59,10 +61,9 @@
 <div id="content">
    
 
-<div id="background"></div>
+   {% block content %}
 
-<div ng-view>
-</div>   
+   {% endblock content %}  
 
 
 
