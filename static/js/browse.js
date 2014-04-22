@@ -1,22 +1,20 @@
+
+
+
+
+
 flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
     function BrowseController(Media, $scope, $interval) {
+	
+	Media.lel($scope);
+        //$scope.media = Media.home;
 
-        $scope.media = Media.home;
-        console.log(Media.home)
-
-        $scope.testForThumbnail = function(card) {
-            if (card.fields.thumbnail) {
-                return ""
-            } else {
-                return "no_thumbnail"
-            }
-        }
-
-        $scope.addMore = function() {
-            $scope.media = $scope.media
-        }
     }
 ])
+
+
+
+
 
 flaxman.controller('PlaylistController', ['$scope', 'Playlist', '$routeParams',
     function PlaylistController($scope, Playlist, $routeParams) {
