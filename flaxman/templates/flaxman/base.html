@@ -1,24 +1,32 @@
-{% load staticfiles %}
+     
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}
+    <title>
         The Flaxman Exchange2
-        {% endblock title %}</title>
+        </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="/static/css/main.css">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-        {% block css %}
+        
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/mobile.css">
 
-        {% endblock css %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-sanitize.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
 
     </head>
-    <body ng-app='Flaxman'>
+    <body id = "everything" ng-app='Flaxman'>
       <div id="header" ng-controller='HeaderController'>
         <div id="title" class='container' >
             <img src="/static/header.png" alt="">
@@ -49,9 +57,16 @@
 </div>
 
 <div id="content">
-   {% block content %}
+   
 
-   {% endblock content %}
+<div id="background"></div>
+
+<div ng-view>
+</div>   
+
+
+
+
 </div>
 
 
@@ -65,7 +80,7 @@
           </div>
 
           <div class='navbar-collapse collapse ' id='footer-elements'>
-            <div class='container'> 
+            <div class='container'>   
                 <ul class='nav navbar-nav navbar-left'>
                    <li><a href='/#/about/art-museum'>UCL Art Museum</a></li>
                    <li><a href='/#/about/contact'>Contact</a></li>
@@ -74,20 +89,60 @@
             </ul>
         </div>
     </div>
-</div>  
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
+</div>   
+<script>      
+var c = "original"; //the global c is declared to hold everything
+var d = [[],[],[]]; //the global d to hold the current array to be displayed
+var counter = 0; //how many times the page has been scrolled
+alert("counter is: " + counter);
+</script>
+<script src='/static/js/app.js'></script> 
+<script src='/static/js/factories.js'></script>
+<script src='/static/js/ui-bootstrap.js'></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-sanitize.min.js'></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
+<script src='/static/js/browse.js'></script>
+<script>   
+angular.$lel = function () {
+    alert("lel! :DDDD");
+};
 
-<script src='{% static "js/app.js" %}'></script>
-<script src='{% static "js/factories.js" %}'></script>
-<script src='{% static "js/ui-bootstrap.js" %}'></script>
-{% block footer_scripts %}
+angular.$externalBroadcast = function (selector, event, message) {
+    var scope = angular.element(selector).scope();
 
-{% endblock footer_scripts %}
+    scope.$apply(function () { 
+        scope.$broadcast(event, message);   
+    });
+};
+
+  $(function () {
+             var $win = $(window);
+
+             $win.scroll(function () {
+                 if ($win.scrollLeft() === 0)
+                     alert('Scrolled to Page Left');
+                 else if ($win.width() + $win.scrollLeft() == $(document).width()) {
+		counter++;     
+		alert("counter is now:"+counter);
+                     alert('Scrolled to Page Right');
+angular.$lel();
+//angular.element('[ng-controller="BrowseController"]').scope().media = [];
+
+for (var i = 0; i < 1; i++){
+d[0][counter+i]=c[0][counter+i];
+d[1][counter+i]=c[1][counter+i];
+d[2][counter+i]=c[2][counter+i];
+}
+
+alert("d is now:"+d);
+angular.element($('#media_browser')).scope().media=d; 
+// Update page to reflect changed variables
+//angular.element('[ng-controller="BrowseController"]').scope().$apply();
+angular.element($('#media_browser')).scope().$apply();
+		     alert("request succeeded!");
+                 }
+             });
+         }); 
+</script>
+
 </body>
-</html>
+</html>                                
