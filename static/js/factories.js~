@@ -3,8 +3,6 @@
 flaxman.factory('Media', ['$http', '$q',
     function MediaFactory($http, $q) {
 
-	var number_of_cards_in_each_row_to_load_at_start = 1;
-
         var Media = {}; 
         Media.home = [];
 	Media.lel = function($scope) {
@@ -16,7 +14,7 @@ flaxman.factory('Media', ['$http', '$q',
             Media.home[1] = Media.home[1].concat(values[1].data.splice(0, Math.ceil(values[1].data.length / 2)));
             Media.home[2] = Media.home[2].concat(values[1].data);
 	c = JSON.parse(JSON.stringify(Media.home));
-		for (var i = 0; i < number_of_cards_in_each_row_to_load_at_start; i++){
+		for (var i = 0; i < 2; i++){
 			d[0][i] = c[0][i];
 			d[1][i] = c[1][i];
 			d[2][i] = c[2][i];
