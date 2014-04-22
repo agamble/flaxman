@@ -8,7 +8,6 @@ flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
 	
 	Media.lel($scope);
         //$scope.media = Media.home;
-	alert("data is supposed to be done by this point..."); 
 
     }
 ])
