@@ -5,7 +5,6 @@ flaxman.factory('Media', ['$http', '$q',
 
         var Media = {}; 
         Media.home = [];
-	alert("mediafactory called");
 	Media.lel = function($scope) {
 		$q.all([Media.getFirst, Media.getAll]).then(function(values) {
             Media.home.push(values[0].data.splice(0, Math.ceil(values[0].data.length / 3)));
@@ -20,12 +19,10 @@ flaxman.factory('Media', ['$http', '$q',
 			d[1][i] = c[1][i];
 			d[2][i] = c[2][i];
 		}
-		alert("data finally fetched!"); alert("d is now:"+d); console.log("c:"+c);console.log("d:"+d);
 		$scope.media=d;        //delayed the scope update to wait for the http request to return heheheheh...
 	}) 
 		//note that this block executes BEFORE the $q block above has returned, therefore c here is empty but above, c is Media.home returned. 
 		console.log("media home:", Media.home); 
-		alert("lel");
 	}
         Media.getSingle = function(id) {
             return $http.get('/api/media/' + id + '.json')
@@ -38,7 +35,6 @@ flaxman.factory('Media', ['$http', '$q',
         }
 
         Media.getFirst = $http.get('/api/media/first.json').then(function (results) {
-alert("http request returned!");
 return results;
 }); 
 
@@ -51,7 +47,6 @@ return results;
             Media.home[0] = Media.home[0].concat(values[1].data.splice(0, Math.ceil(values[1].data.length / 3)));
             Media.home[1] = Media.home[1].concat(values[1].data.splice(0, Math.ceil(values[1].data.length / 2)));
             Media.home[2] = Media.home[2].concat(values[1].data);
-		alert("data finally fetched!");
         })
 	*/
             
