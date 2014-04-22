@@ -95,7 +95,7 @@
 var c = "original"; //the global c is declared to hold everything
 var d = [[],[],[]]; //the global d to hold the current array to be displayed
 var counter = 0; //how many times the page has been scrolled
-var number_of_cards_in_each_row_to_load_at_start = 1; //self explanatory
+var number_of_cards_in_each_row_to_load_at_start = 3; //self explanatory
 var incrementer = 2; //how many cards are added per row whenever user scrolls to end
 </script>
 <script src='/static/js/app.js'></script> 

@@ -5,7 +5,7 @@ flaxman.factory('Media', ['$http', '$q',
 
 
 
-	counter = number_of_cards_in_each_row_to_load_at_start-1;
+	counter = number_of_cards_in_each_row_to_load_at_start;
 
         var Media = {}; 
         Media.home = [];
