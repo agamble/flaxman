@@ -102,13 +102,6 @@ var counter = 0; //how many times the page has been scrolled
 <script src='/static/js/browse.js'></script>
 <script>   
 
-angular.$externalBroadcast = function (selector, event, message) {
-    var scope = angular.element(selector).scope();
-
-    scope.$apply(function () { 
-        scope.$broadcast(event, message);   
-    });
-};
 
   $(function () {
              var $win = $(window);
