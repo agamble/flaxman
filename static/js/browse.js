@@ -1,7 +1,15 @@
 flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
     function BrowseController(Media, $scope, $interval) {
+        var starting_cards = 10;
+        var number_of_cards_to_load = 4;
+        var hidden_array_pointer = starting_cards - 1;
+        var controller_hidden_array;
+        $scope.media = Media.viewableCards;
+        console.log(Media.viewableCards)
 
-        Media.lel($scope);
+        $scope.loadMoreCards = function() {
+            Media.addMoreMedia()
+        }
     }
 ])
 
@@ -10,6 +18,12 @@ flaxman.controller('HeaderController', ['$scope', '$location',
         $scope.isActive = function(viewLocation) {
             return viewLocation === ('/#' + $location.path());
         };
+    }
+])
+
+flaxman.controller('FooterController', ['$scope', 'About',
+    function($scope) {
+
     }
 ])
 
@@ -119,6 +133,22 @@ flaxman.controller('AboutController', ['About', '$scope',
         })
     }
 ])
+
+flaxman.directive('infiniteScroll', [
+
+    function() {
+        return {
+            link: function($scope, iElm, iAttrs, controller) {
+                $(window).scroll(function() {
+                    if ($(window).width() + $(window).scrollLeft() == $(document).width()) {
+                        $scope.$apply(iAttrs.infiniteScroll);
+                        console.log('casdc')
+                    }
+                });
+            }
+        };
+    }
+]);
 
 flaxman.directive('relatedContent',
     function() {

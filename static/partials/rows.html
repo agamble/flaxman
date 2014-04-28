@@ -1,4 +1,4 @@
-<div id="media_browser" ng-controller='BrowseController as browse'>
+<div infinite-scroll='loadMoreCards()' id="media_browser" ng-controller='BrowseController as browse'>
     <div ng-repeat='row in media' id='row{$ $index + 1 $}' class='row' row-width>
         <div class='card' ng-repeat="card in media[$index]" ng-switch  on='card.fields.type'>
             <div ng-switch-when='TX' class="inner_card" ng-class='testForThumbnail(card)' >

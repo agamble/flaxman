@@ -4,6 +4,7 @@ from tinymce.models import HTMLField
 
 class AboutArtGallery(models.Model):
     text = HTMLField()
+    title = models.CharField(max_length=255)
     class Meta:
         verbose_name_plural = "Art Gallery"
         verbose_name = "Art Gallery"
@@ -11,6 +12,7 @@ class AboutArtGallery(models.Model):
 
 class AboutContact(models.Model):
     text = HTMLField()
+    title = models.CharField(max_length=255)
     class Meta:
         verbose_name_plural = "Contact"
         verbose_name = "Contact"
@@ -19,6 +21,8 @@ class AboutContact(models.Model):
 class AboutSpecialCollection(models.Model):
     text = HTMLField()
     image = models.ImageField(upload_to='media/about/')
+    title = models.CharField(max_length=255)
+
     class Meta:
         verbose_name_plural = "Special Collection"
         verbose_name = "Special Collection"
@@ -28,6 +32,8 @@ class AboutPartner(models.Model):
     name = models.CharField(max_length=255)
     description = HTMLField()
     logo = models.ImageField(upload_to='about/', blank=True)
+    title = models.CharField(max_length=255)
+
 
     class Meta:
         verbose_name_plural = "Partners"
