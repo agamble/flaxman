@@ -1,96 +1,88 @@
-     
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>
         The Flaxman Exchange2
-        </title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="/static/css/main.css">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/static/css/main.css">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-        
-<link rel="stylesheet" href="/static/css/index.css">
-<link rel="stylesheet" href="/static/css/mobile.css">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript" src="http://yandex.st/jquery/mousewheel/3.0.6/jquery.mousewheel.min.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/mobile.css">
 
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-sanitize.min.js'></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://yandex.st/jquery/mousewheel/3.0.6/jquery.mousewheel.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
 
-    </head>
-    <body id = "everything" ng-app='Flaxman'>
-      <div id="header" ng-controller='HeaderController'>
-        <div id="title" class='container' >
-            <img src="/static/header.png" alt="">
-            <h1>The Flaxman Exchange</h1>
-        </div>
-        <div id='navbar' class='navbar navbar-default'>
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
-                  <span class="icon-bar white"></span>
-                  <span class="icon-bar white"></span>
-                  <span class="icon-bar white"></span>
-              </button> 
-              <a class="navbar-brand" href="#">The Flaxman Gallery</a>
-          </div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular-sanitize.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
 
-          <div ng-controller='HeaderController' class='navbar-collapse collapse ' id='navbar-elements'>
-            <div class='container'> 
-                <ul class='nav navbar-nav navbar-right'>
-                   <li ng-class="{ active: isActive('/#/explore') }"><a href='/#/explore'>Explore</a></li>
-                   <li ng-class="{ active: isActive('/#/visit') }"><a href='/#/visit'>Visit</a></li>
-                   <li  ng-repeat='playlist in headerPlaylists' 
-                        ng-class="{ active: isActive('/#/playlist/' + playlist.pk ) }">
-                    <a href="/#/playlist/{$ playlist.pk $}"/>{$ playlist.fields.name $}</a>
-                </li>
-            </ul>
-        </div>
+</head>
+<body id = "everything" ng-app='Flaxman'>
+  <div id="header" ng-controller='HeaderController'>
+    <div id="title" class='container' >
+        <img src="/static/header.png" alt="">
+        <h1>The Flaxman Exchange</h1>
     </div>
+    <div id='navbar' class='navbar navbar-default'>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+              <span class="icon-bar white"></span>
+              <span class="icon-bar white"></span>
+              <span class="icon-bar white"></span>
+          </button> 
+          <a class="navbar-brand" href="#">The Flaxman Gallery</a>
+      </div>
+      <div ng-controller='HeaderController' class='navbar-collapse collapse ' id='navbar-elements'>
+        <div class='container'> 
+            <ul class='nav navbar-nav navbar-right'>
+               <li ng-class="{ active: isActive('/#/explore') }"><a href='/#/explore'>Explore</a></li>
+               <li ng-class="{ active: isActive('/#/visit') }"><a href='/#/visit'>Visit</a></li>
+               <li  ng-repeat='playlist in headerPlaylists' 
+               ng-class="{ active: isActive('/#/playlist/' + playlist.pk ) }">
+               <a href="/#/playlist/{$ playlist.pk $}"/>{$ playlist.fields.name $}</a>
+           </li>
+       </ul>
+   </div>
+</div>
 </div>  
 </div>
 
 <div id="content">
-   
 
-<div id="background"></div>
+    <div id="background"></div>
 
-<div ng-view>
-</div>   
-
-
-
-
+    <div ng-view>
+    </div> 
 </div>
 
 
-        <div id='footer' class='navbar navbar-default'>
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-elements">
-                  <span class="icon-bar white"></span>
-                  <span class="icon-bar white"></span>
-                  <span class="icon-bar white"></span>
-              </button> 
-          </div>
+<div id='footer' class='navbar navbar-default'>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-elements">
+          <span class="icon-bar white"></span>
+          <span class="icon-bar white"></span>
+          <span class="icon-bar white"></span>
+      </button> 
+  </div>
 
-          <div class='navbar-collapse collapse ' id='footer-elements'>
-            <div class='container'>   
-                <ul class='nav navbar-nav navbar-left'>
-                   <li><a href='/#/about/art-museum'>UCL Art Museum</a></li>
-                   <li><a href='/#/about/contact'>Contact</a></li>
-                   <li><a href='/#/about/special-collection'>UCL Special Collection</a></li>
-                   <li><a href='/#/about/partners'>Partners</a></li>
-            </ul>
-        </div>
-    </div>
+  <div class='navbar-collapse collapse ' id='footer-elements'>
+    <div class='container'>   
+        <ul class='nav navbar-nav navbar-left'>
+           <li><a href='/#/about/art-museum'>UCL Art Museum</a></li>
+           <li><a href='/#/about/contact'>Contact</a></li>
+           <li><a href='/#/about/special-collection'>UCL Special Collection</a></li>
+           <li><a href='/#/about/partners'>Partners</a></li>
+       </ul>
+   </div>
+</div>
 </div>   
 <script>      
 var c = "original"; //the global c is declared to hold everything
@@ -104,33 +96,33 @@ var counter = 0; //how many times the page has been scrolled
 <script src='/static/js/browse.js'></script>
 <script>   
 $(function() {
-            $("html, body").mousewheel(function(event, delta) {
-                this.scrollLeft -= (delta * 50);
-            });
-        });
-  $(function () {
-             var $win = $(window);
+    $("html, body").mousewheel(function(event, delta) {
+        this.scrollLeft -= (delta * 50);
+    });
+});
+$(function () {
+ var $win = $(window);
 
-             $win.scroll(function () {
-                 if ($win.scrollLeft() === 0){}
+ $win.scroll(function () {
+     if ($win.scrollLeft() === 0){}
                      //alert('Scrolled to Page Left');
                  else if ($win.width() + $win.scrollLeft() == $(document).width()) {
-		counter++;     
+                  counter++;     
 //angular.element('[ng-controller="BrowseController"]').scope().media = [];
 
 for (var i = 0; i < 1; i++){
-d[0][counter+i]=c[0][counter+i];
-d[1][counter+i]=c[1][counter+i];
-d[2][counter+i]=c[2][counter+i];
+    d[0][counter+i]=c[0][counter+i];
+    d[1][counter+i]=c[1][counter+i];
+    d[2][counter+i]=c[2][counter+i];
 }
 
 angular.element($('#media_browser')).scope().media=d; 
 // Update page to reflect changed variables
 //angular.element('[ng-controller="BrowseController"]').scope().$apply();
 angular.element($('#media_browser')).scope().$apply();
-                 }
-             });
-         }); 
+}
+});
+}); 
 </script>
 
 </body>
