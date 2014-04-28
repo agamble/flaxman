@@ -16,7 +16,6 @@ import random
 def media_all(request):
     media = Media.objects.all().exclude(playlist__name='Homepage').order_by('?')    
     playlists = Playlist.objects.all().exclude(name='Homepage')
-
     results = list(itertools.chain(media, playlists))
     random.shuffle(results)
     print results
