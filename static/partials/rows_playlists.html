@@ -4,10 +4,10 @@
             <div ng-switch-when='TX' class="text_card inner_card" ng-class='testForThumbnail(card)' >
                 <a href='/#/media/text/{$ card.pk $}'><img ng-if='card.fields.thumbnail' ng-src="{$ '/upload/' + card.fields.thumbnail $}" alt=""><p class='text_summary' ng-if='!card.fields.thumbnail'>{$card.fields.summary$}</p></a>
             </div>
-            <div ng-switch-when='IM' class="text_card inner_card"  >
+            <div ng-switch-when='IM' class="inner_card"  >
                 <a href='/#/media/image/{$ card.pk $}'><img ng-src="{$ '/upload/' + card.fields.thumbnail $}" alt=""></a>
             </div>
-            <div ng-switch-when='VI' class="text_card inner_card"  >
+            <div ng-switch-when='VI' class="inner_card"  >
                 <a href='/#/media/video/{$ card.pk $}'><img ng-src="{$ '/upload/' + card.fields.thumbnail $}" alt=""></a>
             </div>
             <div ng-switch-when='AU' class="text_card inner_card"  >

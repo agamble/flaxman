@@ -117,6 +117,10 @@ body {
   background-color: #fff !important;
 }
 
+li.active a {
+    color: #333333 !important;
+}
+
 .ng-cloak {
 	opacity: 0;
 }
