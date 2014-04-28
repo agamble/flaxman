@@ -8,14 +8,19 @@ from django.http import HttpResponse
 from django.forms.models import model_to_dict
 import json
 import itertools
+import random
 
 # Create your views here.
 
 
 def media_all(request):
     media = Media.objects.all().exclude(playlist__name='Homepage').order_by('?')    
+    playlists = Playlist.objects.all().exclude(name='Homepage')
 
-    data = serializers.serialize('json', media)
+    results = list(itertools.chain(media, playlists))
+    random.shuffle(results)
+    print results
+    data = serializers.serialize('json', results)
     return HttpResponse(data, content_type='application/json')
 
 def media_single(request, id):
