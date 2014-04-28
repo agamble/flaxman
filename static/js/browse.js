@@ -1,19 +1,19 @@
-
-
-
-
-
 flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
     function BrowseController(Media, $scope, $interval) {
-	
-	Media.lel($scope);
+
+        Media.lel($scope);
         //$scope.media = Media.home;
 
     }
 ])
 
-
-
+flaxman.controller('HeaderController', ['$scope', '$location',
+    function HeaderController($scope, $location) {
+        $scope.isActive = function(viewLocation) {
+            return viewLocation === ('/#' + $location.path());
+        };
+    }
+])
 
 
 flaxman.controller('PlaylistController', ['$scope', 'Playlist', '$routeParams',
@@ -201,48 +201,47 @@ flaxman.directive('relatedContent',
     }
 );
 
-flaxman.directive('rowWidth', ['$timeout',
+// flaxman.directive('rowWidth', ['$timeout',
 
-    function($timeout) {
-        // Runs during compile
-        return {
-            // name: '',
-            // priority: 1,
-            // terminal: true,
-            // scope: {}, // {} = isolate, true = child, false/undefined = no change
-            // controller: function($scope, $element, $attrs, $transclude) {},
-            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-            // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-            // template: '',
-            // templateUrl: '',
-            // replace: true,
-            // transclude: true,
-            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-            link: function($scope, iElm, iAttrs, controller) {
-                var width;
-                var setWidth = function() {
-                    var new_width = 0;
-                    angular.forEach(iElm.children(), function(e, i) {
-                        new_width += $(e).width() + 20;
-                    });
-                    console.log(new_width)
-                    $(iElm).css('width', new_width + 500 + 'px');
-                    return new_width;
-                }
+//     function($timeout) {
+//         // Runs during compile
+//         return {
+//             // name: '',
+//             // priority: 1,
+//             // terminal: true,
+//             // scope: {}, // {} = isolate, true = child, false/undefined = no change
+//             // controller: function($scope, $element, $attrs, $transclude) {},
+//             // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+//             // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+//             // template: '',
+//             // templateUrl: '',
+//             // replace: true,
+//             // transclude: true,
+//             // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+//             link: function($scope, iElm, iAttrs, controller) {
+//                 var width;
+//                 var setWidth = function() {
+//                     var new_width = 0;
+//                     angular.forEach(iElm.children(), function(e, i) {
+//                         new_width += $(e).width() + 20;
+//                     });
+//                     console.log(new_width)
+//                     $(iElm).css('width', new_width + 500 + 'px');
+//                     return new_width;
+//                 }
 
-                $timeout(function() {
+//                 $timeout(function() {
 
-                    elm.bind('scroll', function() {
-                        if (raw.scrollLeft + raw.offsetWidth >= raw.scrollWidth) {
-                            $scope.addMore()
-                        }
-                    })
-                }, 1000);
-            }
-        }
-    }
-]);
-
+//                     elm.bind('scroll', function() {
+//                         if (raw.scrollLeft + raw.offsetWidth >= raw.scrollWidth) {
+//                             $scope.addMore()
+//                         }
+//                     })
+//                 }, 1000);
+//             }
+//         }
+//     }
+// ]);
 // flaxman.directive("setStyle", function() {
 //     return {
 //         link: function(scope, element) {
