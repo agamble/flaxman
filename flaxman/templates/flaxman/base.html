@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,15 +42,15 @@
           </div>
 
           <div class='navbar-collapse collapse ' id='navbar-elements'>
-            <div class='container'>
-                <ul class='nav navbar-nav navbar-right'>
-                   <li><a href='/#/explore'>Explore</a></li>
-                   <li><a href='/#/visit'>Visit</a></li>
-                   <li ng-repeat='playlist in headerPlaylists'>
-                    <a href="/#/playlist/{$ playlist.pk $}"/>{$ playlist.fields.name $}</a>
-                </li>
-            </ul>
-        </div>
+            <div class='container'> 
+            <ul class='nav navbar-nav navbar-right'>
+               <li ng-class="{ active: isActive('/#/explore') }"><a href='/#/explore'>Explore</a></li>
+               <li ng-class="{ active: isActive('/#/visit') }"><a href='/#/visit'>Visit</a></li>
+               <li  ng-repeat='playlist in headerPlaylists' ng-class="{ active: isActive('/#/playlist/' + playlist.pk ) }">
+               <a href="/#/playlist/{$ playlist.pk $}"/>{$ playlist.fields.name $}</a>
+           </li>
+       </ul>
+   </div>
     </div>
 </div>
 </div>
