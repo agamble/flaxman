@@ -25,7 +25,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
 
 </head>
-<body id = "everything" ng-app='Flaxman'>
+<body ng-app='Flaxman'>
   <div id="header" ng-controller='HeaderController'>
     <div id="title" class='container' >
         <img src="/static/header.png" alt="">
@@ -44,14 +44,14 @@
       <div class='navbar-collapse collapse ' id='navbar-elements'>
         <div class='container'> 
             <ul class='nav navbar-nav navbar-right'>
-               <li ng-class="{ active: isActive('/#/explore') }"><a href='/#/explore'>Explore</a></li>
-               <li ng-class="{ active: isActive('/#/visit') }"><a href='/#/visit'>Visit</a></li>
-               <li  ng-repeat='playlist in headerPlaylists' ng-class="{ active: isActive('/#/playlist/' + playlist.pk ) }">
-                   <a href="/#/playlist/{$ playlist.pk $}"/>{$ playlist.fields.name $}</a>
-               </li>
-           </ul>
-       </div>
-   </div>
+             <li ng-class="{ active: isActive('/#/explore') }"><a href='/#/explore'>Explore</a></li>
+             <li ng-class="{ active: isActive('/#/visit') }"><a href='/#/visit'>Visit</a></li>
+             <li  ng-repeat='playlist in headerPlaylists' ng-class="{ active: isActive('/#/playlist/' + playlist.pk ) }">
+                 <a href="/#/playlist/{$ playlist.pk $}"/>{$ playlist.fields.name $}</a>
+             </li>
+         </ul>
+     </div>
+ </div>
 </div>
 </div>
 
@@ -70,15 +70,23 @@
       </button>
   </div>
 
-  <div class='navbar-collapse collapse ' id='footer-elements'>
+  <div class='navbar-collapse collapse' ng-controller='FooterController' id='footer-elements'>
     <div class='container'>
-        <ul class='nav navbar-nav navbar-left'>
-           <li><a href='/#/about/art-museum'>UCL Art Museum</a></li>
-           <li><a href='/#/about/contact'>Contact</a></li>
-           <li><a href='/#/about/special-collection'>UCL Special Collections</a></li>
-           <li><a href='/#/about/partners'>Partners</a></li>
-       </ul>
-   </div>
+        <ul class='nav navbar-nav navbar-left' >
+         <li class='ng-cloak' ng-class="{ active: isActive('/#/about/art-museum') }">
+            <a href='/#/about/art-museum'>{$ artMuseum.fields.title $}</a>
+        </li>
+        <li class='ng-cloak' ng-class="{ active: isActive('/#/about/contact') }">
+            <a href='/#/about/contact'>{$ contact.fields.title $}</a>
+        </li>
+        <li class='ng-cloak' ng-class="{ active: isActive('/#/about/special-collections') }">
+            <a href='/#/about/special-collections'>{$ specialCollections.fields.title $}</a>
+        </li>
+        <li class='ng-cloak' ng-class="{ active: isActive('/#/about/partners') }">
+            <a href='/#/about/partners'>{$ partners.fields.title $}</a>
+        </li>
+    </ul>
+</div>
 </div>
 </div>
 <script src='/static/js/app.js'></script>

@@ -95,15 +95,17 @@
     padding-left: 20px;
     padding-right: 0px;
     position: relative;
+    overflow: scroll;
+    padding-bottom: 50px;
 }
 
 .carousel {
     float: right;
     overflow: visible !important;
+    width: 40%;
 }
 
 .carousel img {
-    height: 400px;
     max-height: 400px;
 }
 
@@ -130,7 +132,6 @@
     float: left;
     padding: 40px;
     width: 400px;
-    font-family: 'whitney-med', serif;
     min-height: 400px;
 }
 

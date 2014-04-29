@@ -56,8 +56,6 @@ flaxman.factory('Media', ['$http', '$q',
             })
         }
 
-
-
         return Media;
 
     }
