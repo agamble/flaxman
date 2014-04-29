@@ -22,8 +22,22 @@ flaxman.controller('HeaderController', ['$scope', '$location',
 ])
 
 flaxman.controller('FooterController', ['$scope', 'About',
-    function($scope) {
-
+    function($scope, About) {
+        About.getArtMuseum.success(function(data) {
+            $scope.artMuseum = data[0];
+        })
+        About.getContact.success(function(data) {
+            $scope.contact = data[0];
+        })
+        About.getSpecialCollections.success(function(data) {
+            $scope.specialCollections = data[0];
+        })
+        About.getPartners.success(function(data) {
+            $scope.partners = data;
+        })
+        About.getVisit.success(function(data) {
+            $scope.visit = data[0];
+        })
     }
 ])
 
@@ -129,7 +143,6 @@ flaxman.controller('AboutController', ['About', '$scope',
         })
         About.getVisit.success(function(data) {
             $scope.visit = data[0];
-            console.log($scope.visit)
         })
     }
 ])
