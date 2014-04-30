@@ -61,7 +61,7 @@ flaxman.config(function($routeProvider, $locationProvider) {
             controller: 'AboutController'
         })
         .when('/about/special-collection', {
-            templateUrl: '/static/partials/about/special-collection.html',
+            templateUrl: '/static/partials/about/special-collections.html',
             controller: 'AboutController'
         })
         .when('/about/partners', {
