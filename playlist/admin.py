@@ -5,7 +5,7 @@ from playlist.models import Playlist
 # Register your models here.
 
 class PlaylistAdmin(admin.ModelAdmin):
-	list_display = ['media',]
+    list_display = ('name', 'header',)
 
 
 admin.site.register(Playlist, PlaylistAdmin)

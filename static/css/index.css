@@ -231,11 +231,12 @@ audio {
     width: 50%;
     margin: 0 auto;
     padding: 50px;
-    text-align: center;
+    text-align: left;
 }
 
 .about-card h2 {
     padding-bottom: 30px;
+    font-family: Georgia, Times, serif;
 }
 
 img.partner_logo {
