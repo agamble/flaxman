@@ -1,9 +1,11 @@
 <div class="overlay" ng-click="goHome()">
 </div>
 <div class="single_audio container ng-cloak" id="single">
+    <a href='/#/explore'><span class="exit glyphicon glyphicon-remove"></span></a>
+
     <div class='single_content'>
         <audio src="{$ '/upload/' + media.fields.audio $}" type="audio/mpeg" controls>
-        Your browser does not support the audio element.
+            Your browser does not support the audio element.
         </audio>
     </div>
     <div class='text_content'>

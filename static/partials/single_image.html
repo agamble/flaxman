@@ -1,6 +1,8 @@
 <div class="overlay" ng-click="goHome()">
 </div>
 <div class="single_image container ng-cloak" id="single">
+    <a href='/#/explore'><span class="exit glyphicon glyphicon-remove"></span></a>
+
     <div class='single_content' ng-switch on='children.length'>
         <div ng-switch-when='0' id='img_no_children'>        
             <img   src="{$ '/upload/' + media.fields.image $}" class='ng-cloak' />

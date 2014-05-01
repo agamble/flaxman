@@ -1,16 +1,18 @@
 <div class="overlay" ng-click="goHome()">
 </div>
 <div class="single_text container ng-cloak" id="single">
-<div class='text_content' >
-    <div class="main_info">          
-        <span id="media_title">{$ media.fields.title $}</span>
-        <span ng-if='media.fields.author' id="author"> - {$ media.fields.author $}</span>
+    <a href='/#/explore'><span class="exit glyphicon glyphicon-remove"></span></a>
+
+    <div class='text_content' >
+        <div class="main_info">          
+            <span id="media_title">{$ media.fields.title $}</span>
+            <span ng-if='media.fields.author' id="author"> - {$ media.fields.author $}</span>
 <!--         <span ng-if='media.fields.date' id="date"> - {$ media.fields.date | limitTo : 4$}</span>
- -->    </div>
-    <div id="description">{$ media.fields.description $}</div>
-    <div ng-if='media.fields.location_in_gallery' id="location_gallery">Gallery Location: {$ media.fields.location_in_gallery $}</div>
-    <div ng-if='media.fields.link_to_geo_location' id="geo_location">Location in the world: {$ media.fields.link_to_geo_location $}</div>
-    <div ng-if='media.fields.link' id="related_link"><a href='{$ media.fields.link $}'>Related Info</a></div>
+-->    </div>
+<div id="description">{$ media.fields.description $}</div>
+<div ng-if='media.fields.location_in_gallery' id="location_gallery">Gallery Location: {$ media.fields.location_in_gallery $}</div>
+<div ng-if='media.fields.link_to_geo_location' id="geo_location">Location in the world: {$ media.fields.link_to_geo_location $}</div>
+<div ng-if='media.fields.link' id="related_link"><a href='{$ media.fields.link $}'>Related Info</a></div>
 </div>
 <div class="related">
     <ng-include src="'/static/partials/related.html'" scope="" onload=""></ng-include>

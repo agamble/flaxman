@@ -71,8 +71,6 @@
     top: 34%;
 }
 
-
-
 #row3 {
     margin-left: 40px;
     bottom: 0px;
@@ -221,7 +219,12 @@ audio {
     text-align: center;
     display: table-cell;
     vertical-align: middle;
+}
 
+.exit {
+    position: absolute;
+    left: 0px;
+    top: 0px;
 }
 
 /*about*/

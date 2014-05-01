@@ -18,18 +18,22 @@
     .navbar-brand {
         display: inherit !important;
         padding-top: 15px !important;
-        font-size: 20pt !important;
+        font-size: 18pt !important;
+        padding: 15px;
+    }
+
+    .navbar-toggle {
+        margin-top: 12px;
     }
 
     #content {
         margin-top: 0px;
-        top: 50px;
+        top: 55px;
         height: 86%;
     }
 
     .card {
         /*height: 90px;*/
-        padding: 5px;
         position: relative;
     }
 
@@ -99,6 +103,7 @@
 
     .carousel {
         margin-bottom: 20px;
+        width: 100%;
     }
 
     #img_no_children {
