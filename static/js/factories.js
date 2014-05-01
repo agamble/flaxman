@@ -79,9 +79,9 @@ flaxman.factory('Playlist', ['$http', '$q',
         Playlists.getSingle = function(id, callback) {
             Playlists.home = []
             $http.get('/api/playlists/' + id + '.json').success(function(data) {
-                Playlists.home[0](data.splice(0, Math.ceil(data.length / 3)));
-                Playlists.home[1](data.splice(0, Math.ceil(data.length / 2)));
-                Playlists.home[2](data)
+                Playlists.home[0] = data.splice(0, Math.ceil(data.length / 3));
+                Playlists.home[1] = data.splice(0, Math.ceil(data.length / 2));
+                Playlists.home[2] = data;
                 callback(Playlists.home)
             })
         }
