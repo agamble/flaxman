@@ -13,16 +13,19 @@ flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
     }
 ])
 
-flaxman.controller('HeaderController', ['$scope', '$location',
-    function HeaderController($scope, $location) {
+flaxman.controller('HeaderController', ['$scope', '$location', 'Playlist',
+    function HeaderController($scope, $location, Playlist) {
         $scope.isActive = function(viewLocation) {
             return viewLocation === ('/#' + $location.path());
         };
+        Playlist.getHeader.success(function(data) {
+            $scope.headerPlaylists = data;
+        })
     }
 ])
 
-flaxman.controller('FooterController', ['$scope', 'About',
-    function($scope, About) {
+flaxman.controller('FooterController', ['$scope', 'About', '$location',
+    function($scope, About, $location) {
         About.getArtMuseum.success(function(data) {
             $scope.artMuseum = data[0];
         })
@@ -38,13 +41,18 @@ flaxman.controller('FooterController', ['$scope', 'About',
         About.getVisit.success(function(data) {
             $scope.visit = data[0];
         })
+
+        $scope.isActive = function(viewLocation) {
+            return viewLocation === ('/#' + $location.path());
+        };
     }
 ])
 
 flaxman.controller('PlaylistController', ['$scope', 'Playlist', '$routeParams',
     function PlaylistController($scope, Playlist, $routeParams) {
-        Playlist.getSingle($routeParams.id)
-        $scope.media = Playlist.home;
+        Playlist.getSingle($routeParams.id, function(data) {
+            $scope.media = data;
+        });
     }
 ])
 

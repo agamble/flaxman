@@ -232,10 +232,11 @@ audio {
     margin: 0 auto;
     padding: 50px;
     text-align: left;
+    margin-bottom: 50px
 }
 
 .about-card h2 {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     font-family: Georgia, Times, serif;
 }
 
@@ -246,3 +247,9 @@ img.partner_logo {
 a#map {
     margin-bottom: 40px;
 }
+
+.divider {
+    width: 100%;
+    border: 1px dashed #b3b3b3;
+}
+

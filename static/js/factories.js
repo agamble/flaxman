@@ -67,16 +67,22 @@ flaxman.factory('Playlist', ['$http', '$q',
     function PlaylistFactory($http, $q) {
         var Playlists = {};
 
-        Playlists.home = [];
+        Playlists.home = [
+            [],
+            [],
+            []
+        ];
         Playlists.getHeader = $http.get('/api/playlists/header.json')
 
         Playlists.getAll = $http.get('/api/media.json')
 
-        Playlists.getSingle = function(id) {
+        Playlists.getSingle = function(id, callback) {
+            Playlists.home = []
             $http.get('/api/playlists/' + id + '.json').success(function(data) {
-                Playlists.home.push(data.splice(0, Math.ceil(data.length / 3)));
-                Playlists.home.push(data.splice(0, Math.ceil(data.length / 2)));
-                Playlists.home.push(data)
+                Playlists.home[0](data.splice(0, Math.ceil(data.length / 3)));
+                Playlists.home[1](data.splice(0, Math.ceil(data.length / 2)));
+                Playlists.home[2](data)
+                callback(Playlists.home)
             })
         }
 
