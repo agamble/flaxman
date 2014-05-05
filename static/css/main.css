@@ -1,11 +1,6 @@
-* {
-	margin: 0;
-	padding: 0;
-}
-
-*, *:before, *:after {
+/**, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-}
+}*/
 
 a {
     text-decoration: none;
@@ -86,9 +81,9 @@ body {
 }
 
 #footer a {
-    padding-top: 10px;
-    padding-bottom: 8px;
-    font-size: 14pt;
+    padding-top: 8px;
+    padding-bottom: 6px;
+    font-size: 10pt;
     color: #fff;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;

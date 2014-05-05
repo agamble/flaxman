@@ -1,8 +1,5 @@
-<div class="container">
-    <div class="about-card ng-cloak">
-        <h2>Visit</h2>
-        <div ng-bind-html='visit.fields.description'></div>
-        <a id='map' href="{$ '/upload/' + visit.fields.artworks_map $}">Download a copy of our map</a>
-
-    </div>
+<div class="about-card ng-cloak container">
+    <h2>Visit</h2>
+    <div ng-bind-html='visit.fields.description'></div>
+    <a id='map' ng-if='visit.fields.artworks_map' href="{$ '/upload/' + visit.fields.artworks_map $}">Download a copy of our map</a>
 </div>

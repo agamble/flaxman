@@ -2,38 +2,25 @@
 </div>
 <div class="single_image container ng-cloak" id="single">
     <a href='/#/explore'><span class="exit glyphicon glyphicon-remove"></span></a>
-
-    <div class='single_content' ng-switch on='children.length'>
-        <div ng-switch-when='0' id='img_no_children'>        
-            <img   src="{$ '/upload/' + media.fields.image $}" class='ng-cloak' />
-            <div class="single_image_caption" ng-bind-html='media.fields.image_caption'>
-            </div>
+    <div class='text_content'>
+        <div class="main_info">          
+            <span id="media_title">{$ media[0].fields.title $}</span>
         </div>
-        <div ng-switch-default id="carousel">
-          <carousel disable-animation="true" interval="myInterval">
-            <slide active="slide.active">
-                <img height-fixer ng-src="{$ '/upload/' + media.fields.image $}" style="margin:auto;">
-                <div class='image_caption'  ng-bind-html='media.fields.image_caption'></div>
-            </slide>
-            <slide ng-repeat="child in children">
-                <img ng-src="{$ '/upload/' + child.fields.child $}" style="margin:auto;">
-                <div class='image_caption' ng-bind-html='child.fields.image_caption'></div>
+        <div id="description">{$ media[0].fields.description $}</div>
+        <div ng-if='media[0].fields.location_in_gallery' id="location_gallery">Gallery Location: {$ media[0].fields.location_in_gallery $}</div>
+        <div ng-if='media[0].fields.link_to_geo_location' id="geo_location">Location in the world: {$ media[0].fields.link_to_geo_location $}</div>
+        <div ng-if='media[0].fields.link' id="related_link"><a href='{$ media[0].fields.link $}'>Related Info</a></div>
+    </div>
+
+    <div class='single_content'>
+        <carousel noTransition='true' interval="myInterval">
+            <slide ng-repeat='medium in media'>
+                <img ng-src="{$ '/upload/' + (medium.fields.image || medium.fields.child) $}" style="margin:auto;">
             </slide>
         </carousel>
+        <div class="single_image_caption" ng-bind-html='media[currentIndex].fields.image_caption'></div>
     </div>
-</div>
-<div class='text_content'>
-    <div class="main_info">          
-        <span id="media_title">{$ media.fields.title $}</span>
-        <span ng-if='media.fields.author' id="author"> - {$ media.fields.author $}</span>
-<!--         <span ng-if='media.fields.date' id="date"> - {$ media.fields.date | limitTo : 4$}</span>
- -->    </div>
-    <div id="description">{$ media.fields.description $}</div>
-    <div ng-if='media.fields.location_in_gallery' id="location_gallery">Gallery Location: {$ media.fields.location_in_gallery $}</div>
-    <div ng-if='media.fields.link_to_geo_location' id="geo_location">Location in the world: {$ media.fields.link_to_geo_location $}</div>
-    <div ng-if='media.fields.link' id="related_link"><a href='{$ media.fields.link $}'>Related Info</a></div>
-</div>
-<div class="related">
-    <ng-include src="'/static/partials/related.html'" scope="" onload=""></ng-include>
-</div>
+    <div class="related">
+        <ng-include src="'/static/partials/related.html'" scope="" onload=""></ng-include>
+    </div>
 </div>

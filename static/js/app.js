@@ -6,6 +6,18 @@ $("button").on("touchend", function() {
     $(this).addClass("mobileHoverFix");
 });
 
+$('.nav li a').on('click', function() {
+    $('.navbar-collapse.in').collapse('hide');
+})
+
+$('.navbar #top_navbar_button').on('click', function() {
+    $('#bottom_collapse.in').collapse('hide');
+})
+
+$('.navbar #bottom_navbar_button').on('click', function() {
+    $('#top_collapse.in').collapse('hide');
+})
+
 
 
 var flaxman = angular.module('Flaxman', ['ngRoute', 'ngSanitize', 'ui.bootstrap']).config(function($interpolateProvider) {

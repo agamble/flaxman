@@ -41,8 +41,7 @@
 }
 
 .text_card a {
-    font-family: 'Georgia', serif;
-    font-size: 20pt;
+    font-size: 20px;
     color: #333333;
     text-align: left;
     padding-right: 50px;
@@ -88,7 +87,7 @@
 }
 
 #single {
-    background-color: #e6e6e6;
+    background-color: #f3f3f3;
     z-index: 10;
     padding-left: 20px;
     padding-right: 0px;
@@ -101,35 +100,26 @@
     float: right;
     overflow: visible !important;
     width: 40%;
+    margin: 4%;
+    margin-bottom: 0px;
 }
 
 .carousel img {
     max-height: 400px;
 }
 
-.carousel-inner {
-}
-
-.image_caption {
-    left: 0px;
-    font-family: 'Georgia', serif;
-    font-size: 12pt;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    background-color: rgba(230,230,230, 0.5);
-    z-index: 5;
-    padding-top: 10px;
-}
-
 .carousel-indicators {
-    bottom: 40px;
+    display: none !important;
+}
+
+.carousel-control {
+    background-image: none !important;
 }
 
 .text_content {
     float: left;
     padding: 40px;
-    width: 400px;
+    width: 45%;
     min-height: 400px;
 }
 
@@ -138,25 +128,13 @@
     font-size: 20pt;
 }
 
-#img_no_children {
-    width: 50%;
-    height: 400px;
-    max-height: 500px;
-    float: right;
-    text-align: right;
-}
-
-#img_no_children img {
-    max-height: 400px;
-    margin-bottom: 10px;
-    max-width: 100%;
-}
-
-#img_no_children .single_image_caption {
+.single_image_caption {
     font-family: 'Georgia', serif;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: right;
+    text-align: center;
+    width: 50%;
+    float: right;
+    padding: 10px;
+    clear: both;
 }
 
 .single_image.container {
@@ -187,11 +165,14 @@
 }
 
 .text_content > div {
-    margin: 10px;
+    margin-bottom: 10px;
 }
 
 #vimeo_video {
     float: right;
+    margin: 4%;
+    margin-left: 0%;
+    width: 50%;
 }
 
 .single_audio {
@@ -223,8 +204,10 @@ audio {
 
 .exit {
     position: absolute;
-    left: 0px;
+    right: 0px;
     top: 0px;
+    font-size: 20px;
+    color: #333333;
 }
 
 /*about*/
@@ -240,8 +223,9 @@ audio {
 
 .about-card h2 {
     padding-bottom: 20px;
-    font-family: Georgia, Times, serif;
+    font-size: 20px;
 }
+
 
 img.partner_logo {
     width: 40%;

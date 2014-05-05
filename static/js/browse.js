@@ -13,6 +13,8 @@ flaxman.controller('BrowseController', ['Media', '$scope', '$interval',
     }
 ])
 
+
+
 flaxman.controller('HeaderController', ['$scope', '$location', 'Playlist',
     function HeaderController($scope, $location, Playlist) {
         $scope.isActive = function(viewLocation) {
@@ -56,11 +58,11 @@ flaxman.controller('PlaylistController', ['$scope', 'Playlist', '$routeParams',
     }
 ])
 
+
 flaxman.controller('ImageSingleController', ['Media', '$scope', '$routeParams', '$location', '$sce',
-    function BrowseController(Media, $scope, $routeParams, $location, $sce) {
+    function ImageSingleController(Media, $scope, $routeParams, $location, $sce) {
         Media.getSingle($routeParams.id).success(function(data) {
-            $scope.media = data.splice(0, 1)[0];
-            $scope.children = data;
+            $scope.media = data;
             console.log($scope.media)
         })
 
@@ -71,6 +73,13 @@ flaxman.controller('ImageSingleController', ['Media', '$scope', '$routeParams', 
         $scope.goHome = function() {
             $location.path('/');
         }
+
+        $scope.currentIndex = 0;
+
+        $scope.$on('currentSlideChange', function(event, data) {
+            $scope.currentIndex = data;
+            console.log(data)
+        })
     }
 ])
 
