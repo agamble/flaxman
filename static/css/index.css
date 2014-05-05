@@ -135,10 +135,7 @@
     float: right;
     padding: 10px;
     clear: both;
-}
-
-.single_image.container {
-    padding-right: 0px;
+    padding-top: 0px;
 }
 
 .text_content #date, .text_content #author {
