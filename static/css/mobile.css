@@ -93,28 +93,23 @@
     #single.container {
         padding-left: 0px;
     }
-    
-    #single img {
-        float: left;
-        width: 100% !important;
-        max-width: none;
-        max-height: none;
+
+    .single_content {
+        float: none;
+        width: 100%;
+    }
+
+    #vimeo_video {
+        min-height: 0px;
     }
 
     .carousel {
-        margin-bottom: 20px;
         width: 100%;
+        float: none;
     }
 
-    #img_no_children {
-        width: 100%;
-        height: auto;
-    }
-
-    #img_no_children .single_image_caption {
-        text-align: center;
-        padding-left: 10px;
-        font-size: 10pt;
+    .single_image_caption {
+        padding: 10px;
     }
 
     .related {
@@ -125,9 +120,12 @@
     }
 
     .related img {
-        width: 100%;
-        height: auto;
+        height: 100px;
         margin-bottom: 20px;
+    }
+
+    .related a {
+        margin-right: 5px;
     }
     
     .single_audio {
@@ -150,6 +148,10 @@
 
     .single_text .text_content {
         min-height: 0px;
+    }
+
+    .exit {
+        display: none;
     }
 
 }

@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'playlist',
     'api',
     'tinymce',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -62,15 +63,17 @@ TEMPLATE_DIRS = (
     'django.template.loaders.app_directories',
 )
 
-
-
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'flaxman',
+        'USER': 'alexander',
+        'PASSWORD': 'hermione',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

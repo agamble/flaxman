@@ -2,7 +2,9 @@
 </div>
 <div class="single_video container ng-cloak" id="single">
     <a href='/#/explore'><span class="exit glyphicon glyphicon-remove"></span></a>
-    <iframe id='vimeo_video' ng-src="{$ trustUrl('//player.vimeo.com/video/' + media.fields.video_id) $}" width="600" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <div class="single_content">
+        <iframe id='vimeo_video' ng-src="{$ trustUrl('//player.vimeo.com/video/' + media.fields.video_id) $}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
 
     <div class='text_content'>
         <div class="main_info">

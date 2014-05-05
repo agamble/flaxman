@@ -49,9 +49,10 @@ def playlists_all(request):
 
 def playlists_single(request, id):
     context = {}
-    PlaylistQuery = Media.objects.filter(playlist__in=id)
+    referencedPlaylist = Playlist.objects.filter(id=id)
+    MediaQuery = Media.objects.filter(playlist__in=id)
 
-    data = serializers.serialize('json', PlaylistQuery)
+    data = serializers.serialize('json', list(itertools.chain(referencedPlaylist, MediaQuery)))
     return HttpResponse(data, content_type='application/json')
 
 def related_content(request, id):

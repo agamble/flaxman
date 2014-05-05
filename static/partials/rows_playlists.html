@@ -13,6 +13,9 @@
             <div ng-switch-when='AU' class="inner_card"  >
                 <a href='/#/media/audio/{$ card.pk $}'><img ng-src="{$ '/upload/' + card.fields.thumbnail $}" alt=""></a>
             </div>
+            <div ng-switch-default class='text_card'>
+                <a href="/#/playlist/{$ card.pk $}">{$ card.fields.name $}</a>
+            </div>
         </div>
     </div>
 </div>
